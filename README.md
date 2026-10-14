@@ -68,6 +68,8 @@ Timeline: `src/data/journey.js`.
 st-anthonys.webp
 purehydro.webp
 fletching.webp
+imedra.webp
+natyadarshitha.webp
 willpower.webp
 ```
 
@@ -94,13 +96,19 @@ The paintings keep their own lamplight, only the interface colour changes.
   at 2880, 2.66x at 3840, and so on) so big screens get the same layout rather than a small page in a
   big window. It uses CSS `zoom`, which Chrome, Edge, Safari and Firefox 126+ support. Older Firefox
   just shows the normal size.
-- 1180px and down: the About portrait shrinks to stay next to the text, the wide work card stacks.
+- Work cards: on a wide screen they sit on a 12-column grid, `span` in `src/data/work.js` is how many
+  columns a card takes. Today that's four rows: St. Anthony's (7) and Purehydro (5), Fletching (5) and
+  Imedra (7), then Natyadarshitha (12) and WillPower (12) on a row each. To add a card, add an object
+  to `PROJECTS`, drop `<slug>.webp` in `src/assets/shots/`, paint a backdrop for `src/assets/img/work/`
+  and give it a lights overlay in `src/components/art/work/` (copy one of the small ones).
+- 1180px and down: the About portrait shrinks to stay next to the text, the two wide work cards stack.
 - 1000px and down: tablet layout with a round menu button instead of the nav links (the "Let's talk"
   button moves into that menu).
-- 760px and down: the Journey road becomes a dotted line on the left.
+- 1000px and down: the Journey road becomes a dotted rail on the left, with a dot for each stop. The
+  amber fill and the lit dots follow your scrolling (`useScrollProgress`, `.jrail` in `responsive.css`).
 - 700px and down: phone layout. Lantern names are hidden here, they would be about 5px tall.
 - Work cards: whenever the two top cards can't sit side by side (about 1118px and narrower) every card
-  stacks the same way, browser window on top and the words underneath, so the four screenshots are the
+  stacks the same way, browser window on top and the words underneath, so the six screenshots are the
   same size. This one is a container query on `.wgrid`, not a media query.
 
 All of it lives in `responsive.css`.
@@ -129,7 +137,15 @@ domain, in a sub-folder, or on a GitHub Pages project URL.
   the big hero painting, which React would otherwise only ask for once the JavaScript has run.
 - `usePauseOffscreenSvg` pauses the SVG `<animate>` tags on any picture that is off screen and starts
   them again just before it scrolls into view. Without it the page keeps the browser busy even when
-  nothing visible is moving.
+  nothing visible is moving. On phones and tablets it also holds them (and the scenery's css loops,
+  through an `is-scrolling` class on `<html>`) still while the page is being scrolled, then lets them
+  carry on a moment after it stops. The slow zoom behind each work card and the self-scrolling
+  screenshots are held the same way.
+- The long night sky behind Work, Tools, Journey and Contact is cut into ten bands (`StoryBackdrop.jsx`,
+  firefly data in `src/data/fireflies.js`) so each band can pause on its own. One page-tall svg is
+  always "on screen" somewhere, which meant every firefly animated all the time.
+- On phones (700px and under) the Tools cards don't bob and use a solid tint instead of the frosted-glass
+  blur, with lighter shadows. Those were the most expensive things to repaint while scrolling.
 - Everything in `dist/assets/` has a hashed file name, so tell your host to cache it for a long time
   (Netlify, Vercel and Cloudflare Pages already do). Make sure gzip or brotli is on for text files.
 

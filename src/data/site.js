@@ -48,7 +48,7 @@ export const COPY = {
   work: {
     caption:
       'The valley switches its lights on, one window at a time. Each one is something I built.',
-    hint: 'Four windows lit so far, with more on the way.',
+    hint: 'Six windows lit so far, with more on the way.',
   },
   toolkit: {
     caption: 'Lanterns drift up from the workshop. Every one carries a tool I reach for.',

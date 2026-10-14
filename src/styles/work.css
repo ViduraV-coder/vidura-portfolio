@@ -25,8 +25,8 @@
 .wgrid {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 28px;
   container: work / inline-size;
 }
@@ -134,7 +134,7 @@
   background: linear-gradient(
     270deg,
     rgba(5, 8, 24, 0.92) 0%,
-    rgba(5, 8, 24, 0.7) 62%,
+    rgba(5, 8, 24, 0.74) 62%,
     rgba(5, 8, 24, 0) 100%
   );
 }
@@ -179,6 +179,8 @@
   max-width: 460px;
   line-height: 1.55;
   color: rgba(243, 233, 210, 0.92);
+  /* a soft dark halo keeps the words readable where a bright sunset sits behind them */
+  text-shadow: 0 1px 12px rgba(5, 8, 24, 0.85);
 }
 
 .wtext__tags {

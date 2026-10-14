@@ -31,6 +31,8 @@ import toolLeaves from './img/toolkit/toolLeaves.webp';
 import toolCat from './img/toolkit/toolCat.webp';
 import workAnthony from './img/work/workAnthony.webp';
 import workFletching from './img/work/workFletching.webp';
+import workImedra from './img/work/workImedra.webp';
+import workNatya from './img/work/workNatya.webp';
 import workPurehydro from './img/work/workPurehydro.webp';
 import workWillpower from './img/work/workWillpower.webp';
 
@@ -67,6 +69,8 @@ export const IMG = {
   toolCat,
   workAnthony,
   workFletching,
+  workImedra,
+  workNatya,
   workPurehydro,
   workWillpower,
 };

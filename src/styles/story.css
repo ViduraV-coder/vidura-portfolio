@@ -9,11 +9,21 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 140px);
-  mask-image: linear-gradient(180deg, transparent 0, #000 140px);
 }
 .sGlobal > * {
   position: absolute;
+}
+/* The top 140px of the sky fades in from the page colour. This used to be a mask-image on the
+   whole element, which made the browser keep a 9,000px-tall offscreen copy of the sky and
+   re-mask it while scrolling. A plain gradient on top looks identical (the page colour is what
+   sits behind) and costs nothing. */
+.sGlobal::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 140px;
+  z-index: 1;
+  background: linear-gradient(180deg, #0a0f2e 0, rgba(10, 15, 46, 0) 100%);
 }
 .sProps {
   position: absolute;

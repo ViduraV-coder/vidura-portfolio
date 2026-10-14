@@ -12,7 +12,8 @@ export default function Journey() {
   const chapter = CHAPTERS.journey;
   const rows = useRef(null);
   const road = useRef(null);
-  useScrollProgress(rows, road);
+  const rail = useRef(null);
+  useScrollProgress(rows, road, rail);
 
   return (
     <section id="journey" className="chapSec">
@@ -29,6 +30,10 @@ export default function Journey() {
 
       <div className="jrows" ref={rows}>
         <JourneyRoad drawRef={road} />
+        {/* the straight version of the road, for tablets and phones (hidden on wide screens) */}
+        <div className="jrail" ref={rail} aria-hidden="true">
+          <span className="jrail__fill" />
+        </div>
 
         {JOURNEY.map((step, i) => (
           <div className={`jrow${i % 2 ? ' jrow--right' : ''}`} key={step.title}>

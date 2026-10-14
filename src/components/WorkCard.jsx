@@ -2,6 +2,8 @@ import useLean from '../hooks/useLean';
 import useScrollPreview from '../hooks/useScrollPreview';
 import AnthonyFx from './art/work/AnthonyFx';
 import FletchingFx from './art/work/FletchingFx';
+import ImedraFx from './art/work/ImedraFx';
+import NatyaFx from './art/work/NatyaFx';
 import PurehydroFx from './art/work/PurehydroFx';
 import WillpowerFx from './art/work/WillpowerFx';
 import BrowserFrame from './BrowserFrame';
@@ -11,6 +13,8 @@ const FX = {
   'st-anthonys': AnthonyFx,
   purehydro: PurehydroFx,
   fletching: FletchingFx,
+  imedra: ImedraFx,
+  natyadarshitha: NatyaFx,
   willpower: WillpowerFx,
 };
 
@@ -22,7 +26,7 @@ export default function WorkCard({ project: p }) {
   return (
     <article
       className={`wcard${p.wide ? ' wcardW' : ''}${p.flip ? ' wcardW--flip' : ''}`}
-      style={{ flex: p.flex, height: p.height }}
+      style={{ gridColumn: `span ${p.span}`, height: p.height }}
       {...lean}
       {...preview}
     >

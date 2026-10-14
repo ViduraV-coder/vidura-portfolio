@@ -354,3 +354,14 @@
     transform: translateY(0);
   }
 }
+
+/* While a phone is being scrolled the background loops (drifting mist, rising sparks, swaying
+   leaves, twinkling stars) hold still, then carry on from the same spot, and so do the slow zoom
+   behind each work card and the self-scrolling screenshots in them. usePauseOffscreenSvg adds and
+   removes the class. The content itself is untouched. */
+html.is-scrolling .sGlobal *,
+html.is-scrolling .sProps *,
+html.is-scrolling .cardArt,
+html.is-scrolling .wframe__shot {
+  animation-play-state: paused !important;
+}

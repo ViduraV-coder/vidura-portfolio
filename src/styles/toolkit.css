@@ -9,6 +9,9 @@
     0 30px 60px -26px rgba(0, 0, 0, 0.9),
     0 0 50px -14px rgba(255, 181, 71, 0.22);
   background: #0b1340;
+  /* the glow layers inside blend with "screen"; this keeps that blending to the arch itself
+     instead of everything painted behind it on the page */
+  isolation: isolate;
 }
 .arch > img {
   position: absolute;

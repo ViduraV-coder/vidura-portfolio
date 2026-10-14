@@ -16,6 +16,11 @@
   height: 100%;
 }
 
+/* the straight rail that stands in for the road on tablets and phones (see responsive.css) */
+.jrail {
+  display: none;
+}
+
 .jrow {
   position: relative;
   height: 300px;
@@ -37,6 +42,21 @@
   border-radius: 50%;
   background: #0a0d22;
   border: 6px solid var(--accent);
+}
+
+/* a dot lights up once the rail's bright line has reached it (useScrollProgress adds the class) */
+@media (max-width: 1000px) {
+  .jnode {
+    transition:
+      background 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .jnode.is-lit {
+    background: var(--accent);
+    box-shadow:
+      0 0 0 6px rgba(255, 181, 71, 0.16),
+      0 0 20px rgba(255, 181, 71, 0.65);
+  }
 }
 
 .jcard {
