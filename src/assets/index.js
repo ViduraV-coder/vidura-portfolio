@@ -30,6 +30,7 @@ import toolCms from './img/toolkit/toolCms.webp';
 import toolLeaves from './img/toolkit/toolLeaves.webp';
 import toolCat from './img/toolkit/toolCat.webp';
 import workAnthony from './img/work/workAnthony.webp';
+import workFletching from './img/work/workFletching.webp';
 import workPurehydro from './img/work/workPurehydro.webp';
 import workWillpower from './img/work/workWillpower.webp';
 
@@ -65,6 +66,7 @@ export const IMG = {
   toolLeaves,
   toolCat,
   workAnthony,
+  workFletching,
   workPurehydro,
   workWillpower,
 };

@@ -72,4 +72,10 @@ summary:focus-visible {
   .wcard:hover > .fx {
     scale: none;
   }
+
+  /* leave the screenshot parked at the top */
+  .wframe__shot {
+    animation: none !important;
+    transition: none;
+  }
 }

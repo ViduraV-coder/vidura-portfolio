@@ -241,9 +241,9 @@ export default function CmsArt() {
           <animateTransform
             attributeName="transform"
             type="translate"
-            values="106.1 172;92.5 112.6;67.1 53.2"
+            values="106.1 172;92.5 98;67.1 24"
             keyTimes="0;0.5;1"
-            dur="15.3s"
+            dur="16s"
             begin="0s"
             repeatCount="indefinite"
           />
@@ -251,7 +251,7 @@ export default function CmsArt() {
             attributeName="opacity"
             values="0;1;1;0"
             keyTimes="0;0.16;0.74;1"
-            dur="15.3s"
+            dur="16s"
             begin="0s"
             repeatCount="indefinite"
           />
@@ -298,9 +298,9 @@ export default function CmsArt() {
           <animateTransform
             attributeName="transform"
             type="translate"
-            values="131.4 172;126.9 112.3;118.4 52.5"
+            values="131.4 172;126.9 98;118.4 24"
             keyTimes="0;0.5;1"
-            dur="15.6s"
+            dur="16s"
             begin="-2s"
             repeatCount="indefinite"
           />
@@ -308,7 +308,7 @@ export default function CmsArt() {
             attributeName="opacity"
             values="0;1;1;0"
             keyTimes="0;0.16;0.74;1"
-            dur="15.6s"
+            dur="16s"
             begin="-2s"
             repeatCount="indefinite"
           />
@@ -355,9 +355,9 @@ export default function CmsArt() {
           <animateTransform
             attributeName="transform"
             type="translate"
-            values="171.5 172;176.1 120.6;184.5 69.3"
+            values="171.5 172;176.1 98;184.5 24"
             keyTimes="0;0.5;1"
-            dur="14.6s"
+            dur="16s"
             begin="-4s"
             repeatCount="indefinite"
           />
@@ -365,7 +365,7 @@ export default function CmsArt() {
             attributeName="opacity"
             values="0;1;1;0"
             keyTimes="0;0.16;0.74;1"
-            dur="14.6s"
+            dur="16s"
             begin="-4s"
             repeatCount="indefinite"
           />
@@ -412,9 +412,9 @@ export default function CmsArt() {
           <animateTransform
             attributeName="transform"
             type="translate"
-            values="196.9 172;210.5 114.9;235.9 57.9"
+            values="196.9 172;210.5 98;235.9 24"
             keyTimes="0;0.5;1"
-            dur="15.9s"
+            dur="16s"
             begin="-6s"
             repeatCount="indefinite"
           />
@@ -422,7 +422,7 @@ export default function CmsArt() {
             attributeName="opacity"
             values="0;1;1;0"
             keyTimes="0;0.16;0.74;1"
-            dur="15.9s"
+            dur="16s"
             begin="-6s"
             repeatCount="indefinite"
           />
@@ -469,9 +469,9 @@ export default function CmsArt() {
           <animateTransform
             attributeName="transform"
             type="translate"
-            values="105.5 172;91.8 116;66.5 60"
+            values="105.5 172;91.8 98;66.5 24"
             keyTimes="0;0.5;1"
-            dur="15.8s"
+            dur="16s"
             begin="-8s"
             repeatCount="indefinite"
           />
@@ -479,7 +479,7 @@ export default function CmsArt() {
             attributeName="opacity"
             values="0;1;1;0"
             keyTimes="0;0.16;0.74;1"
-            dur="15.8s"
+            dur="16s"
             begin="-8s"
             repeatCount="indefinite"
           />
@@ -526,9 +526,9 @@ export default function CmsArt() {
           <animateTransform
             attributeName="transform"
             type="translate"
-            values="137.2 172;132.6 118.6;124.2 65.2"
+            values="137.2 172;132.6 98;124.2 24"
             keyTimes="0;0.5;1"
-            dur="13.2s"
+            dur="16s"
             begin="-10s"
             repeatCount="indefinite"
           />
@@ -536,7 +536,7 @@ export default function CmsArt() {
             attributeName="opacity"
             values="0;1;1;0"
             keyTimes="0;0.16;0.74;1"
-            dur="13.2s"
+            dur="16s"
             begin="-10s"
             repeatCount="indefinite"
           />
@@ -583,9 +583,9 @@ export default function CmsArt() {
           <animateTransform
             attributeName="transform"
             type="translate"
-            values="164.9 172;169.5 123.1;177.9 74.1"
+            values="164.9 172;169.5 98;177.9 24"
             keyTimes="0;0.5;1"
-            dur="14.4s"
+            dur="16s"
             begin="-12s"
             repeatCount="indefinite"
           />
@@ -593,7 +593,7 @@ export default function CmsArt() {
             attributeName="opacity"
             values="0;1;1;0"
             keyTimes="0;0.16;0.74;1"
-            dur="14.4s"
+            dur="16s"
             begin="-12s"
             repeatCount="indefinite"
           />
@@ -640,9 +640,9 @@ export default function CmsArt() {
           <animateTransform
             attributeName="transform"
             type="translate"
-            values="198.8 172;212.4 116.3;237.8 60.7"
+            values="198.8 172;212.4 98;237.8 24"
             keyTimes="0;0.5;1"
-            dur="15.4s"
+            dur="16s"
             begin="-14s"
             repeatCount="indefinite"
           />
@@ -650,7 +650,7 @@ export default function CmsArt() {
             attributeName="opacity"
             values="0;1;1;0"
             keyTimes="0;0.16;0.74;1"
-            dur="15.4s"
+            dur="16s"
             begin="-14s"
             repeatCount="indefinite"
           />

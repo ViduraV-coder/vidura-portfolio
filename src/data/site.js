@@ -1,7 +1,7 @@
 // text and links for the whole page live in this file, the components only lay them out
 export const SITE = {
   name: 'Vidura Gam Hewage',
-  email: 'viduvish97@gmail.com',
+  email: 'hello@viduvish.dev',
   year: 2026,
   github: 'https://github.com/ViduraV-coder',
   linkedin: 'https://linkedin.com/in/vidura-vishwanath',
@@ -31,7 +31,7 @@ export const ABOUT = {
   stats: [
     { value: '5+ yrs', label: 'building for the web' },
     { value: 'London', label: "where I'm based" },
-    { value: '20+', label: 'projects delivered on schedule' },
+    { value: '15+', label: 'projects delivered on schedule' },
   ],
 };
 
@@ -48,11 +48,11 @@ export const COPY = {
   work: {
     caption:
       'The valley switches its lights on, one window at a time. Each one is something I built.',
-    hint: 'Hover a card and the painted scene behind it leans toward your cursor.',
+    hint: 'Four windows lit so far, with more on the way.',
   },
   toolkit: {
     caption: 'Lanterns drift up from the workshop. Every one carries a tool I reach for.',
-    lead: 'Five little night scenes, one for each part of the stack. On the live site every picture is a depth-mapped plane that leans toward your cursor.',
+    lead: 'Five little night scenes, one for each part of the stack, each with its own lamp left on.',
   },
   journey: {
     caption: 'The long road. Quiet, a little lonely, completely worth it.',

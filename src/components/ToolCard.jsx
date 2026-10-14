@@ -28,14 +28,7 @@ export default function ToolCard({ tool }) {
       </div>
 
       <div className="toolCard">
-        {tool.badge ? (
-          <div className="toolCard__row">
-            <h3 className="toolCard__title">{tool.name}</h3>
-            <span className="toolCard__badge">{tool.badge}</span>
-          </div>
-        ) : (
-          <h3 className="toolCard__title">{tool.name}</h3>
-        )}
+        <h3 className="toolCard__title">{tool.name}</h3>
         <div className="toolCard__tag">{tool.tag}</div>
         <div className="toolCard__chips">
           {tool.chips.map((chip) => (

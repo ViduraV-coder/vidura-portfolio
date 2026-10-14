@@ -36,6 +36,8 @@
   font-size: 16px;
   line-height: 1.65;
   color: #b9c0dc;
+  text-wrap: balance;
+  text-shadow: 0 1px 12px rgba(6, 10, 40, 0.7);
 }
 
 .tkGrid {
@@ -91,29 +93,4 @@
   font-family: 'DM Mono', monospace;
   font-size: 12px;
   color: #f3e9d2;
-}
-
-.toolCard__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.toolCard__row span:first-child {
-  font-family: 'Fraunces', serif;
-  font-size: 26px;
-  font-weight: 500;
-  color: #f3e9d2;
-}
-
-.toolCard__badge {
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: var(--accent);
-  color: #120f26;
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
-  white-space: nowrap;
 }

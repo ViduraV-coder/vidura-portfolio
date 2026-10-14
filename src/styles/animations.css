@@ -338,3 +338,19 @@
     top: 96%;
   }
 }
+
+/* a page scrolling down and back up inside its browser window */
+@keyframes shotScroll {
+  0%,
+  3% {
+    transform: translateY(0);
+  }
+  48%,
+  52% {
+    transform: translateY(var(--shift, 0%));
+  }
+  97%,
+  100% {
+    transform: translateY(0);
+  }
+}

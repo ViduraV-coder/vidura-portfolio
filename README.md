@@ -27,7 +27,7 @@ src/
   main.jsx, App.jsx     entry and the page, top to bottom
   data/                 all the words and numbers, start here
     site.js             name, email, links, headings, captions, footer
-    work.js             the three project cards
+    work.js             the project cards
     toolkit.js          the five toolkit cards
     journey.js          the timeline
     ribbons.js          the two scrolling ribbons under the hero
@@ -37,7 +37,8 @@ src/
     art/                the painted scenes and their animated lights
       tools/            one file per toolkit arch
       work/             the lights over each work card
-  hooks/                useLean, useScrollProgress, useCopyToClipboard, useReducedMotion
+  hooks/                useLean, useScrollPreview, useScrollProgress, useCopyToClipboard, useReducedMotion,
+                        usePauseOffscreenSvg
   styles/
     animations.css      every @keyframes in one place
     base.css            accent colour and the page wrapper
@@ -60,17 +61,22 @@ You shouldn't need to touch them unless you swap a picture.
 Text and links: `src/data/site.js`. Projects: `src/data/work.js`. Toolkit chips: `src/data/toolkit.js`.
 Timeline: `src/data/journey.js`.
 
-**Screenshots on the work cards.** The cards show a wireframe until you add a real picture. Drop a
-screenshot of each site into `src/assets/shots/` named after the project:
+**Screenshots on the work cards.** Each card shows a real screenshot of the site. They live in
+`src/assets/shots/`, named after the project, and can be swapped for new ones:
 
 ```
-st-anthonys.jpg
-purehydro.jpg
-willpower.jpg
+st-anthonys.webp
+purehydro.webp
+fletching.webp
+willpower.webp
 ```
 
-jpg, png, webp and avif all work and nothing else needs editing. The frame crops to 16:10 from the
-top, so shoot the top of the home page at about 1600px wide.
+(A card with no picture falls back to a plain wireframe.)
+
+jpg, png, webp and avif all work and nothing else needs editing. Use the whole home page as one tall
+picture. The card shows the top of it, and while you hover the card the page scrolls slowly down,
+pauses, scrolls back up and repeats (on a touch screen it just keeps going). Screenshots about 1440px
+wide look sharpest.
 
 **Accent colour.** One variable at the top of `src/styles/base.css`:
 
@@ -89,9 +95,13 @@ The paintings keep their own lamplight, only the interface colour changes.
   big window. It uses CSS `zoom`, which Chrome, Edge, Safari and Firefox 126+ support. Older Firefox
   just shows the normal size.
 - 1180px and down: the About portrait shrinks to stay next to the text, the wide work card stacks.
-- 1000px and down: tablet layout with a round menu button instead of the nav links.
+- 1000px and down: tablet layout with a round menu button instead of the nav links (the "Let's talk"
+  button moves into that menu).
 - 760px and down: the Journey road becomes a dotted line on the left.
-- 700px and down: phone layout.
+- 700px and down: phone layout. Lantern names are hidden here, they would be about 5px tall.
+- Work cards: whenever the two top cards can't sit side by side (about 1118px and narrower) every card
+  stacks the same way, browser window on top and the words underneath, so the four screenshots are the
+  same size. This one is a container query on `.wgrid`, not a media query.
 
 All of it lives in `responsive.css`.
 
@@ -112,17 +122,27 @@ domain, in a sub-folder, or on a GitHub Pages project URL.
   "GitHub Actions" in the repo settings.
 - Anywhere else: upload what's inside `dist/`.
 
+## Speed
+
+- `vite.config.js` has a small plugin that, at build time, puts the stylesheet straight into
+  `index.html` (it's only ~7 KB gzipped, so it's one less request before the first paint) and preloads
+  the big hero painting, which React would otherwise only ask for once the JavaScript has run.
+- `usePauseOffscreenSvg` pauses the SVG `<animate>` tags on any picture that is off screen and starts
+  them again just before it scrolls into view. Without it the page keeps the browser busy even when
+  nothing visible is moving.
+- Everything in `dist/assets/` has a hashed file name, so tell your host to cache it for a long time
+  (Netlify, Vercel and Cloudflare Pages already do). Make sure gzip or brotli is on for text files.
+
 ## Before going live
 
-- In `index.html` change `og:image` to the full address, e.g. `https://your-domain.com/og.jpg`, and add
-  `<link rel="canonical" href="https://your-domain.com/" />`. Chat apps need the full URL for link
-  previews.
-- Add the work screenshots (above).
+- The addresses in `index.html` (canonical, `og:url`, `og:image`, `twitter:image`, the json-ld), in
+  `public/robots.txt` and in `public/sitemap.xml` all point at `https://viduvish.dev`. If you end up on
+  a different domain, search for `viduvish.dev` and change every match.
+- The current screenshots are fairly small. If you have the chance, replace them with whole-page
+  captures about 1440px wide so the hover preview is sharper.
 - The footer says "Painted with React, Three.js, GSAP, Tailwind", which is copy from the design. This
   build only uses React and plain CSS, so change `FOOTER.stack` in `src/data/site.js` to whatever you
   want it to say.
-- The Toolkit intro says the pictures are "depth-mapped planes". They lean toward the cursor, but they
-  are flat images with a small shift. Reword `COPY.toolkit.lead` in `site.js` if you want it exact.
 - The hero painting is 1672px wide, so it is enlarged on a 4K screen. Replace the files in
   `src/assets/img/hero/` with bigger versions (same names, same framing) if you want it sharper.
 

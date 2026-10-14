@@ -1,5 +1,7 @@
 import useLean from '../hooks/useLean';
+import useScrollPreview from '../hooks/useScrollPreview';
 import AnthonyFx from './art/work/AnthonyFx';
+import FletchingFx from './art/work/FletchingFx';
 import PurehydroFx from './art/work/PurehydroFx';
 import WillpowerFx from './art/work/WillpowerFx';
 import BrowserFrame from './BrowserFrame';
@@ -8,18 +10,21 @@ import BrowserFrame from './BrowserFrame';
 const FX = {
   'st-anthonys': AnthonyFx,
   purehydro: PurehydroFx,
+  fletching: FletchingFx,
   willpower: WillpowerFx,
 };
 
 export default function WorkCard({ project: p }) {
   const lean = useLean();
+  const preview = useScrollPreview();
   const Fx = FX[p.slug];
 
   return (
     <article
-      className={`wcard${p.wide ? ' wcardW' : ''}`}
+      className={`wcard${p.wide ? ' wcardW' : ''}${p.flip ? ' wcardW--flip' : ''}`}
       style={{ flex: p.flex, height: p.height }}
       {...lean}
+      {...preview}
     >
       <div
         className="cardArt"

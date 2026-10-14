@@ -85,7 +85,12 @@ img {
     order: 2;
     width: auto !important;
     padding: 34px 40px 36px !important;
-    background: linear-gradient(180deg, rgba(5, 8, 24, 0) 0%, rgba(5, 8, 24, 0.88) 38%) !important;
+    background: linear-gradient(
+      180deg,
+      rgba(5, 8, 24, 0) 0%,
+      rgba(5, 8, 24, 0.86) 12%,
+      rgba(5, 8, 24, 0.92) 100%
+    ) !important;
   }
 }
 /* tablets */
@@ -108,7 +113,8 @@ img {
     width: 54% !important;
     padding: 0 !important;
   }
-  .heroLinks {
+  .heroLinks,
+  .navCta {
     display: none !important;
   }
   .navMenu {
@@ -148,9 +154,6 @@ img {
     padding-top: 96px !important;
     padding-bottom: 100px !important;
   }
-  .wcardW .wtext__title {
-    font-size: 34px !important;
-  }
   .lantern {
     zoom: 0.8;
   }
@@ -160,6 +163,43 @@ img {
   .cWrap {
     padding-top: 130px !important;
     padding-bottom: 150px !important;
+  }
+}
+/* Whenever the work grid is too narrow for the two top cards to sit side by side (their flex
+   bases 560 + 380 + the 28px gap), every card stacks the same way: browser window on top,
+   words under it. A container query rather than a media query, so the switch point is exact. */
+@container work (width < 968px) {
+  .wcard {
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column;
+    flex: 1 1 100% !important;
+  }
+  .wcard .wframe {
+    position: relative !important;
+    order: 1;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    width: min(80%, 560px) !important;
+    max-width: none !important;
+    margin: 46px auto 0;
+    transform: perspective(1200px) rotateX(5deg) !important;
+  }
+  .wcard .wtext {
+    position: relative !important;
+    order: 2;
+    width: auto !important;
+    padding: 34px 40px 36px !important;
+    background: linear-gradient(
+      180deg,
+      rgba(5, 8, 24, 0) 0%,
+      rgba(5, 8, 24, 0.86) 12%,
+      rgba(5, 8, 24, 0.92) 100%
+    ) !important;
+  }
+  .wcard .wtext__title {
+    font-size: 34px !important;
   }
 }
 /* journey: dotted rail on the left instead of the winding road */
@@ -238,9 +278,6 @@ img {
   .heroText p {
     font-size: 16px !important;
   }
-  .navCta {
-    display: none !important;
-  }
   .heroCue {
     display: none !important;
   }
@@ -290,27 +327,18 @@ img {
   .wgrid {
     gap: 18px !important;
   }
-  .wcard:not(.wcardW) {
-    height: 600px !important;
-    flex: 1 1 100% !important;
-  }
-  .wcardW {
-    flex: 1 1 100% !important;
-  }
   .wcard .wtext {
-    padding-left: 24px !important;
-    padding-right: 24px !important;
-  }
-  .wcard:not(.wcardW) .wtext__title {
-    font-size: 30px !important;
-  }
-  .wcardW .wtext {
     padding: 26px 24px 28px !important;
   }
-  .wcardW .wtext__title {
+  .wcard .wtext__title {
     font-size: 30px !important;
   }
-  .wcardW .wframe {
+  /* tighter tracking so the longest domain and its arrow stay on one line on small phones */
+  .wtext__meta {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+  .wcard .wframe {
     margin-top: 56px;
     width: 88% !important;
   }
@@ -330,6 +358,10 @@ img {
     opacity: 0.7;
   }
   .lantern:nth-child(odd) {
+    display: none;
+  }
+  /* the label would end up around 5px tall after the zoom, so just show the lantern */
+  .lantern span {
     display: none;
   }
   .spark {
@@ -386,6 +418,11 @@ img {
 @media (max-width: 359px) {
   .abWrap {
     zoom: 0.62;
+  }
+  /* the longest project domain only just overflows at 320px */
+  .wtext__meta {
+    font-size: 11px;
+    letter-spacing: 0.03em;
   }
 }
 @media (min-width: 414px) and (max-width: 459px) {

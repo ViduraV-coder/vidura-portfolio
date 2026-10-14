@@ -28,6 +28,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 28px;
+  container: work / inline-size;
 }
 
 .wcard {
@@ -89,6 +90,14 @@
   left: auto;
 }
 
+/* a banner with the browser on the left and the words on the right */
+.wcardW--flip .wframe {
+  right: auto;
+  left: 6%;
+  width: 44%;
+  transform: translateY(-50%) perspective(1400px) rotateY(7deg) rotateX(3deg);
+}
+
 .wtext {
   position: absolute;
   left: 0;
@@ -117,11 +126,25 @@
   right: auto;
 }
 
+.wcardW--flip .wtext {
+  left: auto;
+  right: 0;
+  width: 40%;
+  padding: 0 44px 0 36px;
+  background: linear-gradient(
+    270deg,
+    rgba(5, 8, 24, 0.92) 0%,
+    rgba(5, 8, 24, 0.7) 62%,
+    rgba(5, 8, 24, 0) 100%
+  );
+}
+
 .wtext__meta {
   font-family: 'DM Mono', monospace;
   font-size: 13px;
   letter-spacing: 0.14em;
-  color: #ffc25e;
+  color: #ffd080;
+  text-shadow: 0 1px 8px rgba(5, 8, 24, 0.85);
 }
 
 .wtext__title {
@@ -223,12 +246,33 @@
   white-space: nowrap;
 }
 
+/* the screenshot is a whole page seen through a 16:10 window */
+.wframe__view {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #f4f6ff;
+}
+
 .wframe__shot {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top;
+  height: auto;
+  /* useScrollPreview sets a position when the mouse leaves, this eases it back to the top */
+  transition: transform 0.9s ease;
+}
+
+/* hover: scroll down slowly, pause, scroll back up, pause, repeat. useScrollPreview adds the
+   class, and --shift and --loop are set per picture in BrowserFrame.jsx */
+.wcard.is-previewing .wframe__shot {
+  animation: shotScroll var(--loop, 24s) ease-in-out infinite;
+  will-change: transform;
+}
+
+/* no hover on a touch screen, so the pictures just keep scrolling */
+@media (hover: none) {
+  .wframe__shot {
+    animation: shotScroll var(--loop, 24s) ease-in-out infinite;
+  }
 }
 
 .wire {

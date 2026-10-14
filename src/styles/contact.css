@@ -12,7 +12,7 @@
   max-width: 560px;
   font-size: 18px;
   line-height: 1.65;
-  color: #f0e7d4;
+  color: #fff5e2;
 }
 
 .cmail {
@@ -79,6 +79,8 @@
   font-size: 12px;
   letter-spacing: 0.06em;
   color: #f3e9d2;
+  /* fades into the dark city so the small print never sits on a bright window light */
+  background: linear-gradient(0deg, rgba(5, 8, 24, 0.78), rgba(5, 8, 24, 0));
 }
 
 .cFoot__stack {
@@ -96,6 +98,8 @@
 
 .cFoot a {
   color: #f3e9d2;
+  padding: 14px 12px;
+  margin: -14px -12px;
 }
 
 /* the sunrise is brightest right behind the small text, so add a soft dark patch behind it
@@ -106,7 +110,7 @@
   inset: 34% -4% 24%;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(closest-side, rgba(44, 12, 58, 0.4), rgba(44, 12, 58, 0));
+  background: radial-gradient(closest-side, rgba(44, 12, 58, 0.68), rgba(44, 12, 58, 0));
 }
 
 .cWrap .eyebrow,
@@ -120,4 +124,15 @@
 .cWrap .caption,
 .contactLead {
   text-wrap: balance;
+}
+
+/* the default pale-blue label is a bit faint on the pink sky, so it gets a lighter tint here */
+.cWrap .eyebrow {
+  color: #e6f7ff;
+}
+.cWrap .caption {
+  color: #fbf0da;
+}
+.cWrap .pill {
+  background: rgba(36, 10, 50, 0.4);
 }

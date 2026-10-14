@@ -237,9 +237,9 @@ export default function BackendArt() {
             <animateTransform
               attributeName="transform"
               type="translate"
-              values="165.3 144;165.9 92;167.1 39.9"
+              values="165.3 144;165.9 92;167.1 40"
               keyTimes="0;0.5;1"
-              dur="13.8s"
+              dur="12s"
               begin="0s"
               repeatCount="indefinite"
             />
@@ -247,7 +247,7 @@ export default function BackendArt() {
               attributeName="opacity"
               values="0;1;1;0"
               keyTimes="0;0.18;0.7;1"
-              dur="13.8s"
+              dur="12s"
               begin="0s"
               repeatCount="indefinite"
             />
@@ -277,18 +277,18 @@ export default function BackendArt() {
             <animateTransform
               attributeName="transform"
               type="translate"
-              values="211.1 144;212.4 91.8;215 39.7"
+              values="211.1 144;212.4 92;215 40"
               keyTimes="0;0.5;1"
-              dur="11.9s"
-              begin="-2.3s"
+              dur="12s"
+              begin="-2s"
               repeatCount="indefinite"
             />
             <animate
               attributeName="opacity"
               values="0;1;1;0"
               keyTimes="0;0.18;0.7;1"
-              dur="11.9s"
-              begin="-2.3s"
+              dur="12s"
+              begin="-2s"
               repeatCount="indefinite"
             />
             <g>
@@ -297,7 +297,7 @@ export default function BackendArt() {
                 type="rotate"
                 values="-3;3;-3"
                 dur="9.5s"
-                begin="-2.3s"
+                begin="-2s"
                 repeatCount="indefinite"
               />
               <g transform="scale(1.0)">
@@ -317,18 +317,18 @@ export default function BackendArt() {
             <animateTransform
               attributeName="transform"
               type="translate"
-              values="256.8 144;259.2 102.6;263.6 61.3"
+              values="256.8 144;259.2 92;263.6 40"
               keyTimes="0;0.5;1"
-              dur="11.7s"
-              begin="-4.6s"
+              dur="12s"
+              begin="-4s"
               repeatCount="indefinite"
             />
             <animate
               attributeName="opacity"
               values="0;1;1;0"
               keyTimes="0;0.18;0.7;1"
-              dur="11.7s"
-              begin="-4.6s"
+              dur="12s"
+              begin="-4s"
               repeatCount="indefinite"
             />
             <g>
@@ -337,7 +337,7 @@ export default function BackendArt() {
                 type="rotate"
                 values="-3;3;-3"
                 dur="9.3s"
-                begin="-4.6s"
+                begin="-4s"
                 repeatCount="indefinite"
               />
               <g transform="scale(1.0)">
@@ -357,18 +357,18 @@ export default function BackendArt() {
             <animateTransform
               attributeName="transform"
               type="translate"
-              values="168.3 144;158.4 88.9;140 33.8"
+              values="168.3 144;158.4 92;140 40"
               keyTimes="0;0.5;1"
-              dur="12.9s"
-              begin="-6.9s"
+              dur="12s"
+              begin="-6s"
               repeatCount="indefinite"
             />
             <animate
               attributeName="opacity"
               values="0;1;1;0"
               keyTimes="0;0.18;0.7;1"
-              dur="12.9s"
-              begin="-6.9s"
+              dur="12s"
+              begin="-6s"
               repeatCount="indefinite"
             />
             <g>
@@ -377,7 +377,7 @@ export default function BackendArt() {
                 type="rotate"
                 values="-3;3;-3"
                 dur="10.3s"
-                begin="-6.9s"
+                begin="-6s"
                 repeatCount="indefinite"
               />
               <g transform="scale(1.0)">
@@ -397,18 +397,18 @@ export default function BackendArt() {
             <animateTransform
               attributeName="transform"
               type="translate"
-              values="214.6 144;214.3 101.7;213.8 59.4"
+              values="214.6 144;214.3 92;213.8 40"
               keyTimes="0;0.5;1"
-              dur="13s"
-              begin="-9.2s"
+              dur="12s"
+              begin="-8s"
               repeatCount="indefinite"
             />
             <animate
               attributeName="opacity"
               values="0;1;1;0"
               keyTimes="0;0.18;0.7;1"
-              dur="13s"
-              begin="-9.2s"
+              dur="12s"
+              begin="-8s"
               repeatCount="indefinite"
             />
             <g>
@@ -417,7 +417,7 @@ export default function BackendArt() {
                 type="rotate"
                 values="-3;3;-3"
                 dur="10.4s"
-                begin="-9.2s"
+                begin="-8s"
                 repeatCount="indefinite"
               />
               <g transform="scale(1.0)">
@@ -437,18 +437,18 @@ export default function BackendArt() {
             <animateTransform
               attributeName="transform"
               type="translate"
-              values="256 144;241.9 100.9;215.7 57.8"
+              values="256 144;241.9 92;215.7 40"
               keyTimes="0;0.5;1"
-              dur="13.9s"
-              begin="-11.5s"
+              dur="12s"
+              begin="-10s"
               repeatCount="indefinite"
             />
             <animate
               attributeName="opacity"
               values="0;1;1;0"
               keyTimes="0;0.18;0.7;1"
-              dur="13.9s"
-              begin="-11.5s"
+              dur="12s"
+              begin="-10s"
               repeatCount="indefinite"
             />
             <g>
@@ -457,7 +457,7 @@ export default function BackendArt() {
                 type="rotate"
                 values="-3;3;-3"
                 dur="11.1s"
-                begin="-11.5s"
+                begin="-10s"
                 repeatCount="indefinite"
               />
               <g transform="scale(1.0)">
@@ -474,34 +474,6 @@ export default function BackendArt() {
             </g>
           </g>
         </g>
-      </svg>
-      <svg
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          pointerEvents: 'none',
-        }}
-        viewBox="0 0 300 360"
-        preserveAspectRatio="none"
-      >
-        <rect
-          x="58"
-          y="322"
-          width="184"
-          height="26"
-          rx="13"
-          fill="rgba(7,11,31,0.62)"
-          stroke="rgba(255,255,255,0.22)"
-        />
-        <circle cx="76" cy="335" r="4" fill="#5BE38F">
-          <animate attributeName="opacity" values="0.4;1;0.4" dur="2.4s" repeatCount="indefinite" />
-        </circle>
-        <text x="88" y="339" fontFamily="DM Mono, monospace" fontSize="10.5" fill="#E4DECD">
-          all systems calm · 99.98%
-        </text>
       </svg>
     </>
   );

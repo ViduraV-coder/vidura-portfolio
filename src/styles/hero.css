@@ -102,6 +102,10 @@
   font-weight: 600;
   font-size: 20px;
   color: #f3e9d2;
+  /* the logo text is only ~22px tall, so pad it out to a proper tap size and pull the
+     margin back in so the nav pill doesn't grow */
+  padding-block: 11px;
+  margin-block: -11px;
 }
 
 .heroLinks {
@@ -114,6 +118,9 @@
   font-size: 15px;
   font-weight: 500;
   color: #f3e9d2;
+  /* same trick as the brand link: bigger hit area, same visual spacing */
+  padding: 12px 8px;
+  margin: -12px -8px;
 }
 
 .navCta {

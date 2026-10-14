@@ -532,16 +532,16 @@ export default function FrontendArt() {
             type="translate"
             values="130 186;125.1 108;116 30"
             keyTimes="0;0.5;1"
-            dur="11.5s"
-            begin="-7.7s"
+            dur="10s"
+            begin="-9.1s"
             repeatCount="indefinite"
           />
           <animate
             attributeName="opacity"
             values="0;1;1;0"
             keyTimes="0;0.14;0.78;1"
-            dur="11.5s"
-            begin="-7.7s"
+            dur="10s"
+            begin="-9.1s"
             repeatCount="indefinite"
           />
           <g>
@@ -550,7 +550,7 @@ export default function FrontendArt() {
               type="rotate"
               values="-14;14;-14"
               dur="9.2s"
-              begin="-7.7s"
+              begin="-9.1s"
               repeatCount="indefinite"
             />
             <g transform="scale(1.0)">

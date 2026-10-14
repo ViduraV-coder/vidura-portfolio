@@ -7,10 +7,12 @@ import Toolkit from './components/Toolkit';
 import Work from './components/Work';
 import SharedDefs from './components/art/SharedDefs';
 import StoryBackdrop from './components/art/StoryBackdrop';
+import usePauseOffscreenSvg from './hooks/usePauseOffscreenSvg';
 import useReducedMotion from './hooks/useReducedMotion';
 
 export default function App() {
   useReducedMotion();
+  usePauseOffscreenSvg();
 
   return (
     <div className="site">

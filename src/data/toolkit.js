@@ -15,7 +15,6 @@ export const TOOLS = [
     ],
     offset: 0,
     delay: 0,
-    badge: null,
     art: 'Frontend',
   },
   {
@@ -33,7 +32,6 @@ export const TOOLS = [
     ],
     offset: 56,
     delay: -1.7,
-    badge: null,
     art: 'Backend',
   },
   {
@@ -42,7 +40,6 @@ export const TOOLS = [
     chips: ['Docker', 'AWS', 'CI/CD', 'Git', 'GitHub', 'Debugging', 'SEO basics'],
     offset: 18,
     delay: -3.4,
-    badge: null,
     art: 'Cloud',
   },
   {
@@ -51,7 +48,6 @@ export const TOOLS = [
     chips: ['Three.js', 'React Three Fiber', 'GSAP', 'Framer Motion'],
     offset: 0,
     delay: -5.1,
-    badge: 'LIVE 3D',
     art: 'Motion',
   },
   {
@@ -60,7 +56,6 @@ export const TOOLS = [
     chips: ['WordPress', 'Shopify', 'Webflow', 'Framer', 'GoHighLevel', 'CRM + API integrations'],
     offset: 56,
     delay: -2.6,
-    badge: null,
     art: 'Cms',
   },
 ];

@@ -71,8 +71,9 @@
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
+  /* 10px so the longest names (WordPress, PostgreSQL) stay inside the lantern body */
   font:
-    500 11px 'DM Mono',
+    500 10px 'DM Mono',
     monospace;
   letter-spacing: 0.02em;
   color: #3b1c08;
@@ -174,6 +175,8 @@
   font-size: clamp(19px, 1.6vw, 23px);
   line-height: 1.45;
   color: #ede5d0;
+  /* a soft dark halo so the line stays readable when a lantern drifts behind it */
+  text-shadow: 0 1px 12px rgba(6, 10, 40, 0.7);
 }
 
 .caption--center {

@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NAV, NAV_CTA, SITE } from '../data/site';
 
 export default function Nav() {
   const menu = useRef(null);
+  const [open, setOpen] = useState(false);
 
   // The mobile menu is a <details>, so it opens without any JS. This only closes it again
   // on Escape or a tap outside (clicking a link is handled below).
@@ -54,8 +55,12 @@ export default function Nav() {
         {NAV_CTA.label}
       </a>
 
-      <details className="navMenu" ref={menu}>
-        <summary aria-label="Open menu">
+      <details
+        className="navMenu"
+        ref={menu}
+        onToggle={(event) => setOpen(event.currentTarget.open)}
+      >
+        <summary aria-label={open ? 'Close menu' : 'Open menu'}>
           <span className="bars" />
         </summary>
         <div className="navPanel">
