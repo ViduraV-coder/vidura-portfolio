@@ -1,0 +1,41 @@
+:root {
+  --accent: #ffb547; /* buttons, ribbons, the road, badges. Try #6FD3FF, #5BE38F or #FF8A6B */
+  --lamp: 0.9; /* strength of the lamp glows in the hero (0 to 1) */
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+body {
+  margin: 0;
+  background: #070b1f;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* page wrapper. fluid width; responsive.css scales it up on big screens */
+.site {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Zen Maru Gothic', system-ui, sans-serif;
+  color: #f3e9d2;
+  background: #0a0d22;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

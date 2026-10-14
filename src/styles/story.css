@@ -1,0 +1,276 @@
+.story {
+  position: relative;
+  overflow: hidden;
+  background: #0a0f2e;
+  isolation: isolate;
+}
+.sGlobal {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 140px);
+  mask-image: linear-gradient(180deg, transparent 0, #000 140px);
+}
+.sGlobal > * {
+  position: absolute;
+}
+.sProps {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.sProps > * {
+  position: absolute;
+}
+.chapSec {
+  position: relative;
+  z-index: 2;
+}
+.foliage {
+  position: absolute;
+  pointer-events: none;
+}
+.foliage img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+.foliage--left img {
+  -webkit-mask-image: radial-gradient(ellipse 92% 78% at 0% 50%, #000 38%, transparent 100%);
+  mask-image: radial-gradient(ellipse 92% 78% at 0% 50%, #000 38%, transparent 100%);
+}
+.foliage--right img {
+  -webkit-mask-image: radial-gradient(ellipse 92% 78% at 100% 50%, #000 38%, transparent 100%);
+  mask-image: radial-gradient(ellipse 92% 78% at 100% 50%, #000 38%, transparent 100%);
+}
+.foliage--left {
+  transform-origin: 0% 60%;
+  animation: swayL 9s ease-in-out infinite alternate;
+}
+.foliage--right {
+  transform-origin: 100% 60%;
+  animation: swayR 11s ease-in-out infinite alternate;
+}
+.lantern {
+  position: absolute;
+  pointer-events: none;
+  animation: lanternBob 6.5s ease-in-out infinite;
+}
+.lantern img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.lantern span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font:
+    500 11px 'DM Mono',
+    monospace;
+  letter-spacing: 0.02em;
+  color: #3b1c08;
+  white-space: nowrap;
+}
+.spark {
+  position: absolute;
+  pointer-events: none;
+  animation: sparkRise 34s linear infinite;
+}
+.spark img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mistV {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(196, 150, 238, 0.26) 0%,
+    rgba(196, 150, 238, 0.1) 42%,
+    rgba(196, 150, 238, 0) 70%
+  );
+  filter: blur(10px);
+}
+.mistR {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 176, 160, 0.34) 0%,
+    rgba(255, 176, 160, 0.12) 44%,
+    rgba(255, 176, 160, 0) 72%
+  );
+  filter: blur(10px);
+}
+.spineT {
+  font:
+    500 11px 'DM Mono',
+    monospace;
+  letter-spacing: 0.08em;
+  color: #c9d0ea;
+}
+
+@media (max-width: 1100px) {
+  .spineT {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .foliage {
+    opacity: 0.55;
+  }
+}
+
+/* headings, pills and the spine shared by every chapter */
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: #8fdcff;
+}
+
+.sectionTitle {
+  margin: 16px 0 0;
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #f3e9d2;
+}
+
+.sectionTitle em {
+  font-weight: 400;
+}
+
+.sectionTitle--about {
+  margin: 18px 0 0;
+  font-size: clamp(38px, 4.4vw, 64px);
+  line-height: 1.04;
+}
+
+.sectionTitle--contact {
+  margin: 18px 0 0;
+  font-size: clamp(40px, 6vw, 88px);
+  letter-spacing: -0.025em;
+}
+
+.caption {
+  margin: 20px 0 0;
+  max-width: 540px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(19px, 1.6vw, 23px);
+  line-height: 1.45;
+  color: #ede5d0;
+}
+
+.caption--center {
+  margin: 20px auto 0;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 6px 15px 6px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: #f3e9d2;
+}
+
+.pill__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: 0 0 10px var(--c);
+}
+
+.spineN {
+  position: absolute;
+  left: clamp(14px, 2.4vw, 34px);
+  top: 130px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.spineN__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.08),
+    0 0 16px var(--c);
+}
+
+.spineL {
+  position: absolute;
+  left: calc(clamp(14px, 2.4vw, 34px) + 5px);
+  top: 96px;
+  bottom: 440px;
+  width: 1px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(243, 233, 210, 0) 0,
+    rgba(243, 233, 210, 0.26) 4%,
+    rgba(243, 233, 210, 0.26) 84%,
+    rgba(255, 190, 130, 0.5) 96%,
+    rgba(255, 190, 130, 0) 100%
+  );
+}
+
+.spineL span {
+  position: absolute;
+  left: -2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffe6b0;
+  box-shadow: 0 0 12px 3px rgba(255, 214, 140, 0.7);
+  animation: spineDot 46s linear infinite;
+}
+
+#work {
+  position: relative;
+  padding: 100px clamp(20px, 6.7vw, 96px) 170px;
+}
+
+#toolkit {
+  position: relative;
+  padding: 130px clamp(20px, 6.7vw, 96px) 190px;
+}
+
+#journey {
+  position: relative;
+  padding: 130px clamp(20px, 6.7vw, 96px) 130px;
+}
+
+#contact {
+  position: relative;
+  min-height: 920px;
+  overflow: hidden;
+}

@@ -1,0 +1,71 @@
+.aboutSec {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 70px 90px;
+  padding: 90px clamp(20px, 6.7vw, 96px) 130px;
+  background: linear-gradient(180deg, #070b1f 0%, #0a0f2e 100%);
+  overflow: hidden;
+}
+
+.abWrap {
+  position: relative;
+  flex: 0 1 460px;
+  width: 100%;
+  max-width: 460px;
+}
+
+.abBadge {
+  position: absolute;
+  right: -44px;
+  bottom: 22px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 16px 36px -14px rgba(0, 0, 0, 0.8);
+}
+
+.abText {
+  position: relative;
+  flex: 1 1 480px;
+  max-width: 640px;
+}
+
+.aboutLead {
+  margin: 26px 0 0;
+  font-size: 19px;
+  line-height: 1.75;
+  color: #c9d0ea;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 34px;
+}
+
+.stat {
+  flex: 1 1 150px;
+  padding: 20px 22px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.8);
+}
+
+.stat__value {
+  font-family: 'Fraunces', serif;
+  font-size: 30px;
+  font-weight: 500;
+  color: #f3e9d2;
+}
+
+.stat__label {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #b9c0dc;
+}

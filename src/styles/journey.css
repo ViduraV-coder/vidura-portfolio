@@ -1,0 +1,109 @@
+.journeyHead {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 40px;
+}
+
+.jrows {
+  position: relative;
+  z-index: 1;
+}
+
+.jsvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.jrow {
+  position: relative;
+  height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.jrow--right {
+  justify-content: flex-end;
+}
+
+.jnode {
+  position: absolute;
+  left: 50%;
+  top: 150px;
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #0a0d22;
+  border: 6px solid var(--accent);
+}
+
+.jcard {
+  width: 100%;
+  max-width: 440px;
+  padding: 24px 28px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 24px 48px -26px rgba(0, 0, 0, 0.8);
+}
+
+.jrow .jcard {
+  margin-left: 20px;
+}
+
+.jrow--right .jcard {
+  margin-right: 20px;
+}
+
+.jcard__years {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: #8fdcff;
+}
+
+.jcard__title {
+  margin-top: 8px;
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #f3e9d2;
+}
+
+.jcard__org {
+  margin-top: 2px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffc25e;
+}
+
+.jcard__text {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #c9d0ea;
+}
+
+.jend {
+  position: relative;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jendBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 30px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #120f26;
+  font-size: 18px;
+  font-weight: 700;
+  box-shadow: 0 16px 36px -14px rgba(255, 181, 71, 0.6);
+}

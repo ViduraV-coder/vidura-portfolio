@@ -1,0 +1,75 @@
+/* hover lean, focus rings and a couple of heading resets */
+
+/* h3s instead of divs, so cancel the default bottom/top margin */
+.wtext__title,
+.jcard__title,
+.toolCard__title {
+  margin-bottom: 0;
+}
+
+.toolCard__title {
+  margin-top: 0;
+}
+
+/* lean: useLean sets --lx / --ly (-1 to 1) while the mouse is over a card.
+   the artwork follows the pointer a little, the browser window moves the other way */
+.wcard {
+  isolation: isolate;
+}
+
+.cardArt,
+.wcard > .fx {
+  translate: calc(var(--lx, 0) * 10px) calc(var(--ly, 0) * 7px);
+  transition:
+    translate 0.5s ease-out,
+    scale 0.9s ease;
+}
+
+/* zoom a bit on hover so the moving picture never shows its edge */
+.wcard:hover .cardArt,
+.wcard:hover > .fx {
+  scale: 1.07;
+}
+
+.wframe {
+  translate: calc(var(--lx, 0) * -6px) calc(var(--ly, 0) * -4px);
+  transition: translate 0.5s ease-out;
+}
+
+.arch > * {
+  translate: calc(var(--lx, 0) * 8px) calc(var(--ly, 0) * 10px);
+  transition: translate 0.6s ease-out;
+}
+
+.arch > img {
+  transition:
+    transform 1.4s ease,
+    translate 0.6s ease-out;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.wcard__link:focus-visible {
+  outline-offset: -6px;
+  border-radius: 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardArt,
+  .wcard > .fx,
+  .wframe,
+  .arch > * {
+    translate: none;
+    transition: none;
+  }
+
+  .wcard:hover .cardArt,
+  .wcard:hover > .fx {
+    scale: none;
+  }
+}
