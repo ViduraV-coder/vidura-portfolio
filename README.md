@@ -55,10 +55,10 @@ Both settings are optional. Set nothing and the site still works. To use them, c
 (git ignores it) or add the same names as environment variables in Cloudflare Pages (Settings,
 Variables and secrets). They are read at build time, so changing one needs a redeploy.
 
-| Variable                  | What it does                                                                                                                                                                        |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `VITE_BOOKING_URL`        | Where the "Book a 15-minute call" buttons go, e.g. a Cal.com or Calendly link. Must start with `https://`. Without it the buttons open a ready-written email to hello@viduvish.dev. |
-| `VITE_CF_ANALYTICS_TOKEN` | Cloudflare Web Analytics token. Adds Cloudflare's small cookie-free beacon script. Without it no analytics script is added.                                                         |
+| Variable                  | What it does                                                                                                                                    |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `VITE_BOOKING_URL`        | Overrides where the "Book a 15-minute call" buttons go. Must start with `https://`. The default is my Calendly page, set in `src/data/site.js`. |
+| `VITE_CF_ANALYTICS_TOKEN` | Cloudflare Web Analytics token. Adds Cloudflare's small cookie-free beacon script. Without it no analytics script is added.                     |
 
 Both values end up in the page, so they are not secrets. A value that fails the checks is ignored and
 the build prints a warning.
@@ -85,7 +85,7 @@ src/
 
 ## Editing the content
 
-- **Text, links, email:** `src/data/site.js`.
+- **Text, links, email, booking page:** `src/data/site.js`.
 - **Project cards:** `src/data/work.js`. Each project has a `delivered` list and a `result` slot
   (`null` until a client confirms a number, then a short line such as `'Orders up 40%'`).
 - **Results strip:** `src/data/results.js` (currently the figures from my CV).
@@ -197,7 +197,7 @@ count), 1.7 MB of it the painted images. The whole `dist/` folder is 4.2 MB.
 
 37 end-to-end checks passed in Chromium with Playwright: navigation by mouse, touch and keyboard, the
 mobile menu, copying the email (including when the browser blocks it), the CV download, the project
-links, the pre-filled email draft, the 404 page, the page with JavaScript switched off, and no console
+links, the booking links, the 404 page, the page with JavaScript switched off, and no console
 errors or failed requests. The build was also tried with the environment variables unset, valid and
 invalid.
 

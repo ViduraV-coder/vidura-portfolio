@@ -1,8 +1,8 @@
 // text and links for the whole page live in this file, the components only lay them out
 
 // Only a normal https link is accepted for the booking button. A typo, a link without https://
-// or something odd pasted into the setting falls back to the ready-written email, so the button
-// always works and nothing strange can end up in an href.
+// or something odd pasted into the setting is ignored and the default booking page is used, so the
+// button always works and nothing strange can end up in an href.
 function httpsLink(value) {
   if (!value) return '';
   try {
@@ -16,6 +16,8 @@ function httpsLink(value) {
   return '';
 }
 
+const BOOKING_PAGE = 'https://calendly.com/viduvish97/15-min-meeting';
+
 export const SITE = {
   name: 'Vidura Gam Hewage',
   email: 'hello@viduvish.dev',
@@ -24,10 +26,11 @@ export const SITE = {
   linkedin: 'https://linkedin.com/in/vidura-vishwanath',
   // the PDF lives in public/. Replace the file to update it, the link stays the same
   cv: `${import.meta.env.BASE_URL}Vidura-Gam-Hewage-CV.pdf`,
-  // Link to your calendar for the 15-minute call (Cal.com, Calendly, Google appointment page...).
-  // Put it in a .env file as VITE_BOOKING_URL=https://cal.com/you/15min. Until it is set, the
-  // button opens an email that already says "I'd like a 15-minute call".
-  booking: httpsLink(import.meta.env.VITE_BOOKING_URL),
+  // My Calendly page for the 15-minute call. To use another calendar (Cal.com, a Google appointment
+  // page...) set VITE_BOOKING_URL=https://... in a .env file or in the host's settings, it takes
+  // priority. Make BOOKING_PAGE an empty string and the button opens an email that already says
+  // "I'd like a 15-minute call" instead.
+  booking: httpsLink(import.meta.env.VITE_BOOKING_URL) || BOOKING_PAGE,
 };
 
 const CALL_SUBJECT = '15-minute intro call';

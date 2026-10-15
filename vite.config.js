@@ -79,7 +79,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_');
   if (env.VITE_BOOKING_URL && !/^https:\/\//i.test(env.VITE_BOOKING_URL)) {
     console.warn(
-      '\n[build] VITE_BOOKING_URL has to start with https://, so the buttons will open the email instead.\n',
+      '\n[build] VITE_BOOKING_URL has to start with https://, so it was ignored and the default booking page is used.\n',
     );
   }
   return {
