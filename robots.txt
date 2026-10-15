@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://viduvish.dev/sitemap.xml

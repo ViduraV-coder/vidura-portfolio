@@ -1,6 +1,8 @@
 // every image in one place: import { IMG } and use IMG.heroRoom etc
 import heroWindow from './img/hero/heroWindow.webp';
+import heroWindowPhone from './img/hero/heroWindowPhone.webp';
 import heroRoom from './img/hero/heroRoom.webp';
+import heroRoomPhone from './img/hero/heroRoomPhone.webp';
 import heroPerson from './img/hero/heroPerson.webp';
 import heroMonitor from './img/hero/heroMonitor.webp';
 import heroHandL from './img/hero/heroHandL.webp';
@@ -38,6 +40,8 @@ import workWillpower from './img/work/workWillpower.webp';
 
 export const IMG = {
   heroWindow,
+  heroWindowPhone,
+  heroRoomPhone,
   heroRoom,
   heroPerson,
   heroMonitor,

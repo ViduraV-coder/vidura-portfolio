@@ -14,7 +14,7 @@ export default function Spark({ left, top, width, offset, delay, dx }) {
         '--dx': `${dx}px`,
       }}
     >
-      <img src={IMG.lantern} alt="" loading="lazy" />
+      <img src={IMG.lantern} alt="" width="420" height="520" loading="lazy" />
     </div>
   );
 }

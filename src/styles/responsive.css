@@ -3,9 +3,6 @@ html,
 body {
   overflow-x: hidden;
 }
-img {
-  max-width: 100%;
-}
 .site {
   zoom: 1;
 }
@@ -52,45 +49,11 @@ img {
 }
 /* small laptops / landscape tablets: shrink the portrait so it stays next to the text */
 @media (max-width: 1180px) {
-  .aboutSec {
-    gap: 44px !important;
-  }
   .abWrap {
     flex: none !important;
     width: 460px !important;
     max-width: none !important;
     zoom: 0.8;
-  }
-  .abText {
-    flex: 1 1 400px !important;
-  }
-  .wcardW {
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column;
-  }
-  .wcardW .wframe {
-    position: relative !important;
-    order: 1;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    width: min(80%, 560px) !important;
-    max-width: none !important;
-    margin: 46px auto 0;
-    transform: perspective(1200px) rotateX(5deg) !important;
-  }
-  .wcardW .wtext {
-    position: relative !important;
-    order: 2;
-    width: auto !important;
-    padding: 34px 40px 36px !important;
-    background: linear-gradient(
-      180deg,
-      rgba(5, 8, 24, 0) 0%,
-      rgba(5, 8, 24, 0.86) 12%,
-      rgba(5, 8, 24, 0.92) 100%
-    ) !important;
   }
 }
 /* tablets */
@@ -106,39 +69,9 @@ img {
     transform: translateX(-60%) scale(1.045) !important;
     transform-origin: 60% 50% !important;
   }
-  .heroText {
-    position: absolute !important;
-    left: 5% !important;
-    bottom: 6% !important;
-    width: 54% !important;
-    padding: 0 !important;
-  }
-  .heroLinks,
-  .navCta {
-    display: none !important;
-  }
-  .navMenu {
-    display: block;
-  }
-  .heroNav {
-    left: 16px !important;
-    right: 16px !important;
-    top: 16px !important;
-  }
-  .aboutSec {
-    justify-content: center !important;
-    gap: 56px !important;
-    padding-top: 72px !important;
-    padding-bottom: 96px !important;
-  }
   .abWrap {
     zoom: 1;
   }
-  .abText {
-    flex: 1 1 440px !important;
-    max-width: 640px;
-  }
-  .spineN,
   .spineL {
     display: none !important;
   }
@@ -156,106 +89,6 @@ img {
   }
   .lantern {
     zoom: 0.8;
-  }
-  .tkHead {
-    margin-bottom: 60px !important;
-  }
-  .cWrap {
-    padding-top: 130px !important;
-    padding-bottom: 150px !important;
-  }
-}
-/* Whenever the work grid is too narrow for two cards to sit side by side (about 380px for the
-   narrow one, 560px for the wide one and the 28px gap), every card stacks the same way: browser
-   window on top, words under it, one card per row. A container query rather than a media query,
-   so the switch point is exact. */
-@container work (width < 968px) {
-  .wgrid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .wcard {
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column;
-    grid-column: 1 / -1 !important;
-  }
-  .wcard .wframe {
-    position: relative !important;
-    order: 1;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    width: min(80%, 560px) !important;
-    max-width: none !important;
-    margin: 46px auto 0;
-    transform: perspective(1200px) rotateX(5deg) !important;
-  }
-  .wcard .wtext {
-    position: relative !important;
-    order: 2;
-    width: auto !important;
-    padding: 34px 40px 36px !important;
-    background: linear-gradient(
-      180deg,
-      rgba(5, 8, 24, 0) 0%,
-      rgba(5, 8, 24, 0.86) 12%,
-      rgba(5, 8, 24, 0.92) 100%
-    ) !important;
-  }
-  .wcard .wtext__title {
-    font-size: 34px !important;
-  }
-}
-/* journey: on tablets and phones the winding road gives way to a straight rail down the left. The
-   road is stretched to fit and its curves run under the cards once they get this wide, while the
-   rail always lines up with the dots. It's drawn as you scroll, like the road (useScrollProgress). */
-@media (max-width: 1000px) {
-  .jsvg {
-    display: none;
-  }
-  .jrail {
-    display: block;
-    position: absolute;
-    left: 13px;
-    top: 8px;
-    bottom: 70px;
-    width: 0;
-    border-left: 3px dotted rgba(243, 233, 210, 0.5);
-  }
-  .jrail__fill {
-    position: absolute;
-    left: -3px;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    border-radius: 3px;
-    background: var(--accent);
-    box-shadow: 0 0 12px rgba(255, 181, 71, 0.55);
-    transform: scaleY(0);
-    transform-origin: top;
-    will-change: transform;
-  }
-  .jrow {
-    height: auto !important;
-    display: block !important;
-    padding: 0 0 22px 46px;
-  }
-  .jnode {
-    left: 14px !important;
-    top: 34px !important;
-  }
-  .jcard {
-    max-width: 640px !important;
-    width: auto !important;
-    margin: 0 !important;
-  }
-  .jend {
-    height: auto !important;
-    justify-content: flex-start !important;
-    padding: 4px 0 0 46px;
-  }
-  .jend > div {
-    display: none;
   }
 }
 @media (max-width: 760px) {
@@ -290,37 +123,6 @@ img {
     pointer-events: none;
     z-index: 3;
   }
-  .heroText {
-    left: 20px !important;
-    right: 20px !important;
-    width: auto !important;
-    bottom: 26px !important;
-    z-index: 5;
-  }
-  .heroText p {
-    font-size: 16px !important;
-  }
-  .heroCue {
-    display: none !important;
-  }
-  .heroNav {
-    left: 12px !important;
-    right: 12px !important;
-    top: 12px !important;
-    padding: 6px 6px 6px 16px !important;
-    flex-wrap: nowrap !important;
-  }
-  .heroNav > a:first-child {
-    font-size: 17px !important;
-    white-space: nowrap;
-  }
-  .rbnSec {
-    zoom: 0.62;
-  }
-  .aboutSec {
-    padding: 56px 20px 80px !important;
-    gap: 44px !important;
-  }
   .abWrap {
     flex: none !important;
     width: 460px !important;
@@ -331,12 +133,6 @@ img {
     right: -16px !important;
     bottom: -34px !important;
   }
-  .abText {
-    flex: 1 1 100% !important;
-  }
-  .abText p {
-    font-size: 17px !important;
-  }
   #work {
     padding: 72px 20px 96px !important;
   }
@@ -346,56 +142,11 @@ img {
   #journey {
     padding: 84px 20px 90px !important;
   }
-  .wgrid {
-    gap: 18px !important;
-  }
-  .wcard .wtext {
-    padding: 26px 24px 28px !important;
-  }
-  .wcard .wtext__title {
-    font-size: 30px !important;
-  }
-  /* tighter tracking so the longest domain and its arrow stay on one line on small phones */
-  .wtext__meta {
-    font-size: 12px;
-    letter-spacing: 0.06em;
-  }
-  .wcard .wframe {
-    margin-top: 56px;
-    width: 88% !important;
-  }
-  .tkHead {
-    margin-bottom: 44px !important;
-  }
-  .tkGrid {
-    gap: 34px 0 !important;
-  }
-  .archWrap {
-    flex: 1 1 100% !important;
-    max-width: 420px !important;
-    margin: 0 auto !important;
-    /* no bobbing on phones: it kept the whole card (blur and all) re-compositing every frame */
-    animation: none !important;
-  }
-  /* The frosted-glass blur and the big soft shadows are the costliest things in this section
-     to repaint while the page is being flung around, and they barely read at this size. A
-     slightly more solid tint stands in for the blur so the text sits on the same shade. */
   /* the mist is already a soft gradient, the extra blur only cost repaint time */
   .mist,
   .mistV,
   .mistR {
     filter: none;
-  }
-  .toolCard {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    background: rgba(36, 44, 104, 0.8);
-    box-shadow: 0 14px 24px -16px rgba(0, 0, 0, 0.8);
-  }
-  .arch {
-    box-shadow:
-      0 18px 30px -20px rgba(0, 0, 0, 0.9),
-      0 0 28px -10px rgba(255, 181, 71, 0.22);
   }
   .lantern {
     zoom: 0.5;
@@ -418,30 +169,6 @@ img {
     width: 320px !important;
     right: -40px !important;
   }
-  .cWrap {
-    padding: 110px 20px 170px !important;
-  }
-  .cWrap h2 {
-    font-size: 42px !important;
-  }
-  .cmail {
-    display: flex !important;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px !important;
-    padding: 12px 14px 12px 22px !important;
-    border-radius: 30px !important;
-    max-width: 100%;
-  }
-  .cmail span {
-    font-size: clamp(17px, 5.2vw, 24px) !important;
-    word-break: break-all;
-  }
-  .cFoot {
-    justify-content: center !important;
-    text-align: center;
-    padding-bottom: 18px !important;
-  }
   #contact {
     min-height: 1010px !important;
   }
@@ -455,18 +182,10 @@ img {
   .abWrap {
     zoom: 0.7;
   }
-  .heroText h1 {
-    font-size: 34px !important;
-  }
 }
 @media (max-width: 359px) {
   .abWrap {
     zoom: 0.62;
-  }
-  /* the longest project domain only just overflows at 320px */
-  .wtext__meta {
-    font-size: 11px;
-    letter-spacing: 0.03em;
   }
 }
 @media (min-width: 414px) and (max-width: 459px) {

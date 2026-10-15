@@ -2,26 +2,43 @@
   "name": "vidura-portfolio",
   "version": "1.0.0",
   "private": true,
+  "license": "UNLICENSED",
+  "description": "Portfolio site for Vidura Gam Hewage, a freelance full-stack developer in London. React, Vite, Tailwind, Three.js and GSAP.",
+  "author": "Vidura Gam Hewage <hello@viduvish.dev> (https://viduvish.dev)",
+  "homepage": "https://viduvish.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViduraV-coder/vidura-portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ViduraV-coder/vidura-portfolio/issues"
+  },
   "type": "module",
-  "description": "Personal portfolio site, built with React and Vite",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write \"src/**/*.{js,jsx,css}\" index.html"
+    "format": "prettier --write \"src/**/*.{js,jsx,css}\" index.html",
+    "format:check": "prettier --check .",
+    "smoke": "node scripts/smoke.mjs"
   },
   "dependencies": {
+    "gsap": "^3.15.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "three": "^0.186.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.3.3",
     "@vitejs/plugin-react": "^6.1.2",
     "eslint": "^10.12.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.13.0",
     "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "^4.3.3",
     "vite": "^8.3.4"
   },
   "engines": {

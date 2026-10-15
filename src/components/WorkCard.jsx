@@ -18,41 +18,122 @@ const FX = {
   willpower: WillpowerFx,
 };
 
+// Tailwind only generates classes it can read as whole strings, so the few sizes the data file
+// can ask for are spelled out here instead of being built with template strings.
+const SPAN = { 5: 'col-span-5', 7: 'col-span-7', 12: 'col-span-12' };
+const HEIGHT = { 540: 'h-[540px]', 680: 'h-[680px]' };
+
+// Three layouts. "card" is the tall one (picture on top, words fading in at the bottom), "wide" is a
+// banner with the browser on the right, "flip" the same with the browser on the left.
+// Whenever the grid is too narrow for two cards side by side (a container query on the grid, about
+// 968px) every card stacks: browser window, then the words, one card per row. The wide banners also
+// stack on laptops and below (max-lap, 1180px).
+const LAYOUT = {
+  card: {
+    box: '@max-[968px]/work:col-[1/-1] @max-[968px]/work:flex @max-[968px]/work:h-auto @max-[968px]/work:flex-col',
+    text: 'right-0 bottom-0 left-0 px-8 pt-[90px] pb-[30px] bg-[linear-gradient(180deg,rgba(5,8,24,0)_0%,rgba(5,8,24,0.92)_46%)]',
+    title: 'mt-1.5 text-[36px]',
+    desc: 'mt-1.5 leading-[1.5] text-[rgba(243,233,210,0.9)]',
+    delivered: 'mt-3',
+    tags: 'mt-3.5',
+  },
+  wide: {
+    box: 'max-lap:flex max-lap:h-auto max-lap:flex-col @max-[968px]/work:col-[1/-1] @max-[968px]/work:flex @max-[968px]/work:h-auto @max-[968px]/work:flex-col',
+    text: 'top-0 bottom-0 left-0 flex w-[56%] flex-col justify-center py-0 pr-10 pl-11 bg-[linear-gradient(90deg,rgba(5,8,24,0.92)_0%,rgba(5,8,24,0.7)_62%,rgba(5,8,24,0)_100%)]',
+    title: 'mt-2 text-[40px] leading-[1.05]',
+    // a soft dark halo keeps the words readable where a bright sunset sits behind them
+    desc: 'mt-2.5 max-w-[min(460px,calc(89%-90px))] max-lap:max-w-[460px] leading-[1.55] text-[rgba(243,233,210,0.92)] [text-shadow:0_1px_12px_rgba(5,8,24,0.85)]',
+    // both lines stop short of the browser frame, which starts at the middle of the banner (the
+    // text box is 56% wide plus its padding, so the sum below is the room left before the frame)
+    delivered: 'mt-3.5 max-w-[min(460px,calc(89%-90px))] max-lap:max-w-none',
+    tags: 'mt-4',
+  },
+  flip: {
+    box: 'max-lap:flex max-lap:h-auto max-lap:flex-col @max-[968px]/work:col-[1/-1] @max-[968px]/work:flex @max-[968px]/work:h-auto @max-[968px]/work:flex-col',
+    text: 'top-0 right-0 bottom-0 flex w-[40%] flex-col justify-center py-0 pr-11 pl-[calc(7%+36px)] bg-[linear-gradient(270deg,rgba(5,8,24,0.92)_0%,rgba(5,8,24,0.76)_78%,rgba(5,8,24,0)_100%)]',
+    title: 'mt-2 text-[40px] leading-[1.05]',
+    desc: 'mt-2.5 max-w-[460px] leading-[1.55] text-[rgba(243,233,210,0.92)] [text-shadow:0_1px_12px_rgba(5,8,24,0.85)]',
+    delivered: 'mt-3.5 max-w-[460px] max-lap:max-w-none',
+    tags: 'mt-4',
+  },
+};
+
+// the text block once its card has stacked
+const STACKED_TEXT = {
+  card: '@max-[968px]/work:relative @max-[968px]/work:order-2 @max-[968px]/work:w-auto @max-[968px]/work:bg-[linear-gradient(180deg,rgba(5,8,24,0)_0%,rgba(5,8,24,0.86)_12%,rgba(5,8,24,0.92)_100%)] @max-[968px]/work:p-[34px_40px_36px]',
+  wide: 'max-lap:relative max-lap:order-2 max-lap:w-auto max-lap:bg-[linear-gradient(180deg,rgba(5,8,24,0)_0%,rgba(5,8,24,0.86)_12%,rgba(5,8,24,0.92)_100%)] max-lap:p-[34px_40px_36px] @max-[968px]/work:relative @max-[968px]/work:order-2 @max-[968px]/work:w-auto @max-[968px]/work:bg-[linear-gradient(180deg,rgba(5,8,24,0)_0%,rgba(5,8,24,0.86)_12%,rgba(5,8,24,0.92)_100%)] @max-[968px]/work:p-[34px_40px_36px]',
+};
+STACKED_TEXT.flip = STACKED_TEXT.wide;
+
 export default function WorkCard({ project: p }) {
   const lean = useLean();
   const preview = useScrollPreview();
   const Fx = FX[p.slug];
+  const kind = p.flip ? 'flip' : p.wide ? 'wide' : 'card';
+  const layout = LAYOUT[kind];
 
   return (
     <article
-      className={`wcard${p.wide ? ' wcardW' : ''}${p.flip ? ' wcardW--flip' : ''}`}
-      style={{ gridColumn: `span ${p.span}`, height: p.height }}
+      data-reveal
+      className={`wcard group/card relative isolate overflow-hidden rounded-[32px] shadow-[0_30px_60px_-28px_rgba(0,0,0,0.9)] ${SPAN[p.span]} ${HEIGHT[p.height]} ${layout.box}`}
       {...lean}
       {...preview}
     >
       <div
-        className="cardArt"
-        style={{
-          backgroundImage: `url(${p.backdrop})`,
-          backgroundSize: 'cover',
-          backgroundPosition: p.backdropPosition,
-        }}
+        className="cardArt absolute inset-0 animate-[kenb_22s_ease-in-out_infinite_alternate] bg-cover bg-no-repeat"
+        style={{ backgroundImage: `url(${p.backdrop})`, backgroundPosition: p.backdropPosition }}
       />
       <Fx />
-      <BrowserFrame domain={p.domain} title={p.title} wire={p.wire} screenshot={p.screenshot} />
-      <span className="wcard__visit" aria-hidden="true">
+      <BrowserFrame
+        kind={kind}
+        domain={p.domain}
+        title={p.title}
+        wire={p.wire}
+        screenshot={p.screenshot}
+      />
+      <span
+        className="absolute top-5 right-5 z-5 flex size-10 items-center justify-center rounded-full border border-[rgba(255,255,255,0.28)] bg-[rgba(10,14,40,0.62)] text-[18px] text-cream backdrop-blur-[10px]"
+        aria-hidden="true"
+      >
         ↗
       </span>
 
-      <div className="wtext">
-        <div className="wtext__meta">
+      <div className={`absolute max-ph:p-[26px_24px_28px]! ${layout.text} ${STACKED_TEXT[kind]}`}>
+        {/* tighter tracking on phones so the longest domain and its arrow stay on one line */}
+        <div className="font-mono text-[13px] tracking-[0.14em] text-honey [text-shadow:0_1px_8px_rgba(5,8,24,0.85)] max-ph:text-[12px] max-ph:tracking-[0.06em] max-xxs:text-[11px] max-xxs:tracking-[0.03em]">
           {p.n} &nbsp;·&nbsp; {p.domain} ↗
         </div>
-        <h3 className="wtext__title">{p.title}</h3>
-        <div className="wtext__desc">{p.desc}</div>
-        <div className="wtext__tags">
+        <h3
+          className={`font-display font-medium wrap-break-word text-cream max-ph:text-[30px]! @max-[968px]/work:text-[34px] ${layout.title}`}
+        >
+          {p.title}
+        </h3>
+        <div className={`text-[16px] ${layout.desc}`}>{p.desc}</div>
+        {p.delivered?.length > 0 && (
+          <ul
+            className={`m-0 flex list-none flex-wrap gap-x-3.5 gap-y-0.5 p-0 font-mono text-[12px] leading-[1.55] text-[rgba(243,233,210,0.8)] [text-shadow:0_1px_8px_rgba(5,8,24,0.85)] ${layout.delivered}`}
+          >
+            <li className="tracking-[0.14em] text-honey uppercase">Delivered</li>
+            {p.delivered.map((item) => (
+              <li className="before:mr-1.5 before:text-honey before:content-['✓']" key={item}>
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
+        {/* shows up once a real figure is added to the project in data/work.js */}
+        {p.result && (
+          <div className="mt-3 inline-flex items-center gap-2 self-start rounded-full border border-[rgba(255,194,94,0.6)] bg-[rgba(255,194,94,0.12)] px-3 py-1 font-mono text-[12px] text-honey">
+            <span aria-hidden="true">↗</span>
+            {p.result}
+          </div>
+        )}
+        <div className={`flex flex-wrap gap-2 ${layout.tags}`}>
           {p.tags.map((tag) => (
-            <span className="tag" key={tag}>
+            <span
+              className="rounded-full border border-[rgba(243,233,210,0.5)] px-3 py-[5px] font-mono text-[12px] text-cream"
+              key={tag}
+            >
               {tag}
             </span>
           ))}
@@ -61,7 +142,7 @@ export default function WorkCard({ project: p }) {
 
       {/* the whole card is one link */}
       <a
-        className="wcard__link"
+        className="absolute inset-0 z-6 focus-visible:rounded-[32px] focus-visible:[outline-offset:-6px]"
         href={p.url}
         target="_blank"
         rel="noopener noreferrer"

@@ -1,10 +1,15 @@
-// the road behind the timeline. the bright line is drawn as you scroll (useScrollProgress)
+// the road behind the timeline. the bright line is drawn as you scroll (useJourneyScroll)
 export const ROAD =
   'M500 0 L500 150 C740 230 740 370 500 450 C260 530 260 670 500 750 C740 830 740 970 500 1050 C500 1110 500 1160 500 1200';
 
 export default function JourneyRoad({ drawRef }) {
   return (
-    <svg className="jsvg" aria-hidden="true" viewBox="0 0 1000 1320" preserveAspectRatio="none">
+    <svg
+      className="absolute inset-0 size-full max-tab:hidden"
+      aria-hidden="true"
+      viewBox="0 0 1000 1320"
+      preserveAspectRatio="none"
+    >
       <path
         d={ROAD}
         fill="none"

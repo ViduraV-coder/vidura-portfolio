@@ -16,12 +16,12 @@ export const JOURNEY = [
     years: '2024 — 2026',
     title: 'Freelance Full-Stack Developer',
     org: 'Tetrad Global · Remote',
-    text: 'Shipped 6 client sites and web apps on Next.js, React, Node.js and Supabase, plus 10+ projects across WordPress, Shopify, Webflow and Framer, with GoHighLevel workflows for leads and bookings. Bug fixes and tuning cut load time by 35%.',
+    text: 'Shipped 6 client sites and web apps on Next.js, React, Node.js and Supabase, plus 15+ projects across WordPress, Shopify, Webflow and Framer, with GoHighLevel workflows for leads and bookings. Bug fixes and tuning cut load time by 35%.',
   },
   {
     years: 'NOW',
-    title: 'Open to full-stack roles',
+    title: 'Open to client work and full-stack roles',
     org: 'London, UK',
-    text: 'Looking for a team where I can own a feature end to end, from the API to the last pixel of motion.',
+    text: 'Taking on new projects for UK businesses, or joining a team where I can own a feature end to end, from the API to the last pixel of motion.',
   },
 ];

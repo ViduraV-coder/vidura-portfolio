@@ -1,12 +1,52 @@
 // text and links for the whole page live in this file, the components only lay them out
+
+// Only a normal https link is accepted for the booking button. A typo, a link without https://
+// or something odd pasted into the setting falls back to the ready-written email, so the button
+// always works and nothing strange can end up in an href.
+function httpsLink(value) {
+  if (!value) return '';
+  try {
+    const url = new URL(value);
+    if (url.protocol === 'https:') return url.href;
+  } catch {
+    // not a link at all, handled below
+  }
+  if (import.meta.env.DEV)
+    console.warn(`VITE_BOOKING_URL ignored, it needs to start with https:// (got "${value}")`);
+  return '';
+}
+
 export const SITE = {
   name: 'Vidura Gam Hewage',
   email: 'hello@viduvish.dev',
   year: 2026,
   github: 'https://github.com/ViduraV-coder',
   linkedin: 'https://linkedin.com/in/vidura-vishwanath',
-  resumeSubject: 'Résumé request',
+  // the PDF lives in public/. Replace the file to update it, the link stays the same
+  cv: `${import.meta.env.BASE_URL}Vidura-Gam-Hewage-CV.pdf`,
+  // Link to your calendar for the 15-minute call (Cal.com, Calendly, Google appointment page...).
+  // Put it in a .env file as VITE_BOOKING_URL=https://cal.com/you/15min. Until it is set, the
+  // button opens an email that already says "I'd like a 15-minute call".
+  booking: httpsLink(import.meta.env.VITE_BOOKING_URL),
 };
+
+const CALL_SUBJECT = '15-minute intro call';
+const CALL_BODY = `Hi Vidura,
+
+I'd like to book a 15-minute call about my project.
+
+What I need:
+Rough timeline:
+Good times for me (UK time):
+`;
+
+// where every "Book a 15-minute call" button points
+export const BOOK_CALL = SITE.booking
+  ? { href: SITE.booking, external: true }
+  : {
+      href: `mailto:${SITE.email}?subject=${encodeURIComponent(CALL_SUBJECT)}&body=${encodeURIComponent(CALL_BODY)}`,
+      external: false,
+    };
 
 export const NAV = [
   { href: '#work', label: 'Work' },
@@ -18,10 +58,10 @@ export const NAV = [
 export const NAV_CTA = { href: '#contact', label: "Let's talk" };
 
 export const HERO = {
-  badge: 'AVAILABLE FOR NEW ROLES',
+  badge: 'TAKING ON NEW UK PROJECTS',
   lead: 'Full-stack developer crafting fast, thoughtful products, with a soft spot for motion, 3D and late-night debugging.',
   primary: { href: '#work', label: 'See my work' },
-  secondary: { href: '#contact', label: 'Say hello' },
+  secondary: { label: 'Book a 15-min call' },
   cue: 'SCROLL',
 };
 
@@ -56,13 +96,17 @@ export const COPY = {
   },
   journey: {
     caption: 'The long road. Quiet, a little lonely, completely worth it.',
-    next: 'Next chapter: your team?',
+    next: 'Next chapter: your project?',
   },
   contact: {
     caption: 'First light, and the cat slept through all of it.',
-    lead: "I'm open to new roles and interesting projects. Drop me a line and let's talk.",
+    lead: "I'm taking on new client projects in the UK, and I'm open to the right full-time role. Tell me what you're building and we'll take it from there.",
+    book: 'Book a 15-minute call',
+    or: 'or write to me directly',
+    cv: 'Download CV',
     copy: 'Copy',
     copied: 'Copied!',
+    copyFailed: 'Press Ctrl+C',
   },
 };
 

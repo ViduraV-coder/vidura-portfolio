@@ -3,27 +3,41 @@
   --lamp: 0.9; /* strength of the lamp glows in the hero (0 to 1) */
 }
 
-/* touch screens flash a coloured box over whatever you tap; the page has its own hover and focus
-   styles, so switch that off everywhere */
-* {
-  -webkit-tap-highlight-color: transparent;
-}
+/* These element rules sit in the "base" layer so Tailwind's utilities (which come after it) can
+   override them. The scene css further down isn't layered, which is why it always wins over them. */
+@layer base {
+  /* touch screens flash a coloured box over whatever you tap; the page has its own hover and
+     focus styles, so switch that off everywhere */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 84px;
-}
-body {
-  margin: 0;
-  background: #070b1f;
-}
-a {
-  color: inherit;
-  text-decoration: none;
-}
-button {
-  font-family: inherit;
-  cursor: pointer;
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+  }
+  body {
+    margin: 0;
+    background: #070b1f;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+  img {
+    max-width: 100%;
+  }
 }
 
 /* page wrapper. fluid width; responsive.css scales it up on big screens */

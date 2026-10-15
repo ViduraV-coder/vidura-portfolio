@@ -1,0 +1,34 @@
+/* Tailwind, without its reset: base.css already does the little resetting this page needs, and a
+   second reset would shift the painted scenes. Utilities sit in their own layer, so plain css
+   (the scenes, the keyframes) always wins over them. */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@theme {
+  --color-cream: #f3e9d2;
+  --color-night: #070b1f;
+  --color-deep: #0a0d22;
+  --color-ink: #120f26;
+  --color-accent: var(--accent);
+  --color-sky: #8fdcff;
+  --color-amber: #ffc25e;
+  --color-honey: #ffd080;
+  --color-mist: #b9c0dc;
+  --color-haze: #c9d0ea;
+  --color-moon: #dcd6c6;
+  --color-go: #5be38f;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Zen Maru Gothic', system-ui, sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  /* the page's own breakpoints: "max-tab:" means 1000px and narrower, and so on */
+  --breakpoint-ph: 701px;
+  --breakpoint-mid: 761px;
+  --breakpoint-tab: 1001px;
+  --breakpoint-lap: 1181px;
+  --breakpoint-desk: 1101px;
+  --breakpoint-xs: 390px;
+  --breakpoint-xxs: 360px;
+}

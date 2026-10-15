@@ -1,17 +1,31 @@
 // the hero painting is four layers that drift at slightly different speeds (cWin, cRoom, cPer, cMon)
 import { IMG } from '../../assets';
+import useMediaQuery from '../../hooks/useMediaQuery';
 import { Shooting, Twinkle } from './svg';
 
+// On a phone only a slice of the picture is on screen (the person and the desk, roughly 42% to 90%
+// of the way across), so phones get a cut-down copy of the room and of the window's right edge
+// instead of the full pictures. The numbers are where that slice sits inside the full frame.
+const PHONE = '(max-width: 700px)';
+const ROOM_FULL = { src: IMG.heroRoom, left: 0, width: '100%' };
+const ROOM_PHONE = { src: IMG.heroRoomPhone, left: '38.038%', width: '53.947%' };
+const WINDOW_FULL = { src: IMG.heroWindow, left: '0%', width: '45.455%' };
+const WINDOW_PHONE = { src: IMG.heroWindowPhone, left: '35.407%', width: '10.048%' };
+
 export default function HeroScene() {
+  const phone = useMediaQuery(PHONE);
+  const room = phone ? ROOM_PHONE : ROOM_FULL;
+  const win = phone ? WINDOW_PHONE : WINDOW_FULL;
+
   return (
     <>
       <div className="cam">
         {/* window view */}
         <div className="lay" style={{ animation: 'cWin 24s ease-in-out infinite alternate' }}>
           <img
-            src={IMG.heroWindow}
+            src={win.src}
             alt=""
-            style={{ left: '0%', top: '0%', width: '45.455%', height: '55.26%' }}
+            style={{ left: win.left, top: '0%', width: win.width, height: '55.26%' }}
           />
           <svg
             aria-hidden="true"
@@ -249,9 +263,9 @@ export default function HeroScene() {
         {/* room, with the window cut out */}
         <div className="lay" style={{ animation: 'cRoom 24s ease-in-out infinite alternate' }}>
           <img
-            src={IMG.heroRoom}
+            src={room.src}
             alt="Illustrated attic room at night"
-            style={{ left: 0, top: 0, width: '100%', height: '100%' }}
+            style={{ left: room.left, top: 0, width: room.width, height: '100%' }}
           />
           <img
             src={IMG.cat}

@@ -7,22 +7,19 @@ import {
   SKY_HEIGHT,
   SKY_WIDTH,
 } from '../../data/fireflies';
+import { BAND_EDGES, PAD_BOTTOM, PAD_TOP } from '../../data/skyBands';
+import { useSkyActive } from '../../lib/skyState';
 import { Fireflies, Shooting } from './svg';
 
 // The sky used to be one svg as tall as the whole page. A browser can only pause svg animations
 // for a whole svg at a time, and a page-sized one is always "on screen" somewhere, so all 130-odd
 // fireflies kept animating no matter where you were (and phones felt it while scrolling).
 // Cutting the sky into bands lets usePauseOffscreenSvg put the ones you can't see to sleep.
-const BAND_COUNT = 10;
-const BAND_EDGES = Array.from({ length: BAND_COUNT + 1 }, (_, i) =>
-  Math.round((i * SKY_HEIGHT) / BAND_COUNT),
-);
-// each band reaches a bit past its edges so fireflies that wander across the line (up to ~40
-// units) and shooting stars (they travel ~190 units down) don't get clipped
-const PAD_TOP = 40;
-const PAD_BOTTOM = 200;
+// (Band edges are in data/skyBands.js.)
 
-function SkyBand({ from, to }) {
+// "off" hides a band while the WebGL fireflies are running. A hidden svg counts as off screen, so
+// usePauseOffscreenSvg stops its animations too, and they wake up again if WebGL goes away.
+function SkyBand({ from, to, off }) {
   const top = Math.max(0, from - PAD_TOP);
   const bottom = Math.min(SKY_HEIGHT, to + PAD_BOTTOM);
   const inBand = (y) => y >= from && y < to;
@@ -36,6 +33,7 @@ function SkyBand({ from, to }) {
         top: `${(top / SKY_HEIGHT) * 100}%`,
         width: '100%',
         height: `${((bottom - top) / SKY_HEIGHT) * 100}%`,
+        display: off ? 'none' : undefined,
       }}
       viewBox={`0 ${top} ${SKY_WIDTH} ${bottom - top}`}
       preserveAspectRatio="xMidYMin slice"
@@ -50,8 +48,9 @@ function SkyBand({ from, to }) {
 }
 
 function SkyBands() {
+  const off = useSkyActive();
   return BAND_EDGES.slice(0, -1).map((from, i) => (
-    <SkyBand key={from} from={from} to={BAND_EDGES[i + 1]} />
+    <SkyBand key={from} from={from} to={BAND_EDGES[i + 1]} off={off} />
   ));
 }
 

@@ -35,41 +35,69 @@ export default function Nav() {
   };
 
   return (
-    <nav className="heroNav" aria-label="Main">
-      <a className="navBrand" href="#top">
+    <nav
+      className="absolute top-6 left-[5%] z-[6] flex items-center justify-between gap-x-[26px] gap-y-2 rounded-full border border-white/16 bg-[rgba(10,14,40,0.58)] py-[9px] pr-[9px] pl-[22px] shadow-[0_14px_40px_-18px_rgba(0,0,0,0.8)] backdrop-blur-[14px] max-tab:top-4 max-tab:right-4 max-tab:left-4 max-ph:top-3 max-ph:right-3 max-ph:left-3 max-ph:flex-nowrap max-ph:py-1.5 max-ph:pr-1.5 max-ph:pl-4"
+      aria-label="Main"
+    >
+      {/* the logo text is only ~22px tall, so it's padded out to a proper tap size, and the negative
+          margin pulls it back in so the pill doesn't grow. Same trick on the links below */}
+      <a
+        className="-my-[11px] flex items-center gap-2.5 py-[11px] font-display text-[20px] font-semibold text-cream max-ph:text-[17px] max-ph:whitespace-nowrap"
+        href="#top"
+      >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z" fill="#FFB547" />
         </svg>
         {SITE.name}
       </a>
 
-      <div className="heroLinks">
+      <div className="flex items-center gap-6 max-tab:hidden">
         {NAV.map((link) => (
-          <a key={link.href} href={link.href}>
+          <a
+            key={link.href}
+            className="-mx-2 -my-3 px-2 py-3 text-[15px] font-medium text-cream"
+            href={link.href}
+          >
             {link.label}
           </a>
         ))}
       </div>
 
-      <a className="navCta" href={NAV_CTA.href}>
+      <a
+        className="rounded-full bg-accent px-5 py-[11px] text-[15px] font-bold text-ink max-tab:hidden"
+        href={NAV_CTA.href}
+      >
         {NAV_CTA.label}
       </a>
 
+      {/* the phone and tablet menu is a <details>, so it opens without any JS */}
       <details
-        className="navMenu"
+        className="group relative hidden max-tab:block"
         ref={menu}
         onToggle={(event) => setOpen(event.currentTarget.open)}
       >
-        <summary aria-label={open ? 'Close menu' : 'Open menu'}>
-          <span className="bars" />
+        <summary
+          className="flex size-11 cursor-pointer list-none items-center justify-center rounded-full bg-accent [&::-webkit-details-marker]:hidden"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+        >
+          <span className="relative h-0.5 w-[18px] rounded-[2px] bg-ink transition-colors duration-200 group-open:bg-transparent before:absolute before:top-[-6px] before:left-0 before:h-0.5 before:w-[18px] before:rounded-[2px] before:bg-ink before:transition-transform before:duration-[250ms] before:ease-[ease] before:content-[''] group-open:before:translate-y-1.5 group-open:before:rotate-45 after:absolute after:top-1.5 after:left-0 after:h-0.5 after:w-[18px] after:rounded-[2px] after:bg-ink after:transition-transform after:duration-[250ms] after:ease-[ease] after:content-[''] group-open:after:-translate-y-1.5 group-open:after:-rotate-45" />
         </summary>
-        <div className="navPanel">
+        <div className="absolute top-[calc(100%+14px)] right-0 flex min-w-[230px] flex-col gap-0.5 rounded-3xl border border-white/16 bg-[rgba(10,14,40,0.94)] p-2.5 shadow-[0_24px_50px_-20px_rgba(0,0,0,0.9)] backdrop-blur-[18px]">
           {NAV.map((link) => (
-            <a key={link.href} href={link.href} onClick={closeMenu}>
+            <a
+              key={link.href}
+              className="rounded-2xl px-4 py-[13px] text-[17px] font-semibold text-cream hover:bg-white/8 active:bg-white/8"
+              href={link.href}
+              onClick={closeMenu}
+            >
               {link.label}
             </a>
           ))}
-          <a className="cta" href={NAV_CTA.href} onClick={closeMenu}>
+          <a
+            className="mt-1.5 rounded-2xl bg-accent px-4 py-[13px] text-center text-[17px] font-semibold text-ink hover:bg-accent active:bg-accent"
+            href={NAV_CTA.href}
+            onClick={closeMenu}
+          >
             {NAV_CTA.label}
           </a>
         </div>

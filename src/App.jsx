@@ -7,11 +7,14 @@ import Toolkit from './components/Toolkit';
 import Work from './components/Work';
 import SharedDefs from './components/art/SharedDefs';
 import StoryBackdrop from './components/art/StoryBackdrop';
+import StorySparkles from './components/art/StorySparkles';
 import usePauseOffscreenSvg from './hooks/usePauseOffscreenSvg';
+import useMotion from './hooks/useMotion';
 import useReducedMotion from './hooks/useReducedMotion';
 
 export default function App() {
   useReducedMotion();
+  useMotion();
   usePauseOffscreenSvg();
 
   return (
@@ -24,6 +27,7 @@ export default function App() {
         {/* work, toolkit, journey and contact all sit on one long night sky */}
         <div className="story" id="story">
           <StoryBackdrop />
+          <StorySparkles />
           <div className="spineL" aria-hidden="true">
             <span />
           </div>

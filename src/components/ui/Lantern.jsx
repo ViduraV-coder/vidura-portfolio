@@ -16,6 +16,8 @@ export default function Lantern({ left, top, width, offset, dur, delay, hue, lab
       <img
         src={IMG.lantern}
         alt=""
+        width="420"
+        height="520"
         style={{ filter: `hue-rotate(${hue}deg) saturate(1.08)` }}
         loading="lazy"
       />
