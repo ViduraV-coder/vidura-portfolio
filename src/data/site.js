@@ -106,7 +106,7 @@ export const COPY = {
     cv: 'Download CV',
     copy: 'Copy',
     copied: 'Copied!',
-    copyFailed: 'Press Ctrl+C',
+    copyFailed: 'Press Ctrl or Cmd + C',
   },
 };
 

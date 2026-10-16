@@ -585,7 +585,7 @@ export default function HeroScene() {
           >
             <img
               src={IMG.heroPerson}
-              alt="The developer typing at his desk"
+              alt="Vidura typing at his desk"
               style={{ left: 0, top: 0, width: '100%', height: '100%' }}
             />
             <img
