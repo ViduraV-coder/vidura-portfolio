@@ -62,3 +62,71 @@
     transition: none;
   }
 }
+
+/* custom cursor (components/Cursor.jsx). the real cursor is only hidden once the mouse has moved, so it can
+   never vanish without the dot being there */
+html.hasCursor,
+html.hasCursor * {
+  cursor: none !important;
+}
+
+.cur {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.cur[data-on] {
+  opacity: 1;
+}
+
+.curRing,
+.curDot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.curRing span,
+.curDot span {
+  display: block;
+  border-radius: 50%;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease;
+}
+
+/* the dark edge keeps both visible over the white browser windows */
+.curRing span {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1.5px solid rgba(255, 208, 128, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(10, 14, 40, 0.4),
+    0 0 18px rgba(255, 181, 71, 0.3);
+}
+.curDot span {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: var(--accent);
+  box-shadow:
+    0 0 0 1.5px rgba(10, 14, 40, 0.6),
+    0 0 10px var(--accent);
+}
+
+.cur[data-hot] .curRing span {
+  transform: scale(1.6);
+  background: rgba(255, 181, 71, 0.14);
+}
+.cur[data-hot] .curDot span {
+  transform: scale(0.4);
+}
+.cur[data-down] .curRing span {
+  transform: scale(0.8);
+}
+.cur[data-hot][data-down] .curRing span {
+  transform: scale(1.3);
+}

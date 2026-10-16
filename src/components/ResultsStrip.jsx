@@ -17,7 +17,7 @@ export default function ResultsStrip() {
         data-reveal
         className="mt-3 font-display text-[clamp(28px,3vw,38px)] leading-[1.1] font-medium text-balance text-cream [text-shadow:0_1px_12px_rgba(6,10,40,0.7)]"
       >
-        Numbers from my CV
+        A few numbers
       </h3>
 
       <div className="mt-7 grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-4">

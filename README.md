@@ -23,7 +23,9 @@ Live at <https://viduvish.dev>
 
 There's also a custom 404 page, `robots.txt`, `sitemap.xml`, a link preview image, structured data
 (JSON-LD) and a plain fallback for when JavaScript is off. It works from 320px phones up to 4K and
-5K screens, and it respects "reduce motion".
+5K screens, and it respects "reduce motion". On wide screens with a mouse there's also a small amber
+cursor (`src/components/Cursor.jsx`). Touch screens, narrow windows and reduced motion keep the normal
+one.
 
 ## Built with
 
@@ -133,14 +135,14 @@ and networks will differ.
 
 |                          | Mobile (slow 4G, 4x slower CPU) | Desktop               |
 | ------------------------ | ------------------------------- | --------------------- |
-| Performance              | 81 (runs: 81, 81, 80)           | 97 (runs: 97, 97, 97) |
+| Performance              | 80 (runs: 80, 81, 80)           | 97 (runs: 97, 99, 97) |
 | Accessibility            | 100                             | 100                   |
 | Best practices           | 100                             | 100                   |
 | SEO                      | 100                             | 100                   |
 | First Contentful Paint   | 2.7 s                           | 0.6 s                 |
 | Largest Contentful Paint | 4.2 s                           | 1.2 s                 |
-| Total Blocking Time      | 122 ms                          | 25 ms                 |
-| Cumulative Layout Shift  | 0.001                           | 0.007                 |
+| Total Blocking Time      | 128 ms                          | 18 ms                 |
+| Cumulative Layout Shift  | 0                               | 0.007                 |
 | Speed Index              | 2.7 s                           | 0.7 s                 |
 
 Mobile performance is the one I want to improve. The biggest paint is the hero painting and most of
@@ -155,8 +157,8 @@ above are what someone gets before any animation code arrives.
 
 | File                              | Size         | Gzip   | When                                                 |
 | --------------------------------- | ------------ | ------ | ---------------------------------------------------- |
-| `index.html` (stylesheet inlined) | 66 kB        | 14 kB  | first load                                           |
-| Main script (React and the page)  | 319 kB       | 87 kB  | first load                                           |
+| `index.html` (stylesheet inlined) | 67 kB        | 14 kB  | first load                                           |
+| Main script (React and the page)  | 321 kB       | 87 kB  | first load                                           |
 | GSAP + ScrollTrigger              | 110 kB       | 44 kB  | after the first scroll or key press                  |
 | Three.js fireflies                | 517 kB       | 128 kB | near the story section, wide screens with real WebGL |
 | Fonts (seven woff2 files)         | 208 kB total |        | first load                                           |
@@ -198,10 +200,10 @@ Lighthouse counts them), and 1.7 MB of that is the painted images. The whole `di
 
 ### Behaviour checks
 
-37 end-to-end checks pass in Chromium with Playwright: navigation by mouse, touch and keyboard, the
+44 end-to-end checks pass in Chromium with Playwright: navigation by mouse, touch and keyboard, the
 mobile menu, copying the email (including when the browser blocks it), the CV download, the project
-links, the booking links, the 404 page, the page with JavaScript switched off, and no console
-errors or failed requests. I also built it with the environment variables unset, valid and invalid.
+links, the booking links, the custom cursor, the 404 page, the page with JavaScript switched off, and
+no console errors or failed requests. I also built it with the environment variables unset, valid and invalid.
 
 ### Analytics
 

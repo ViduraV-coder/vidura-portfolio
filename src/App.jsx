@@ -1,5 +1,6 @@
 import About from './components/About';
 import Contact from './components/Contact';
+import Cursor from './components/Cursor';
 import Hero from './components/Hero';
 import Journey from './components/Journey';
 import Ribbons from './components/Ribbons';
@@ -18,22 +19,25 @@ export default function App() {
   usePauseOffscreenSvg();
 
   return (
-    <div className="site">
-      <SharedDefs />
-      <main>
-        <Hero />
-        <Ribbons />
-        <About />
-        {/* work, toolkit, journey and contact all sit on one long night sky */}
-        <div className="story" id="story">
-          <StoryBackdrop />
-          <StorySparkles />
-          <Work />
-          <Toolkit />
-          <Journey />
-          <Contact />
-        </div>
-      </main>
-    </div>
+    <>
+      <Cursor />
+      <div className="site">
+        <SharedDefs />
+        <main>
+          <Hero />
+          <Ribbons />
+          <About />
+          {/* work, toolkit, journey and contact all sit on one long night sky */}
+          <div className="story" id="story">
+            <StoryBackdrop />
+            <StorySparkles />
+            <Work />
+            <Toolkit />
+            <Journey />
+            <Contact />
+          </div>
+        </main>
+      </div>
+    </>
   );
 }
