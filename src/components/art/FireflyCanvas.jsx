@@ -19,16 +19,15 @@ import {
 import { bandStart } from '../../data/skyBands';
 import { setSkyActive } from '../../lib/skyState';
 
-// The same fireflies and shooting stars as the svg sky (data/fireflies.js), drawn with Three.js:
-// one transparent canvas fixed over the viewport and one draw call. Every light is a soft glowing
-// point, and they drift out of the way of the mouse. Positions are worked out the same way the
-// svg bands place them, so the lights sit where they always did.
+// the svg sky's fireflies and shooting stars (data/fireflies.js) redrawn with three.js: one transparent canvas
+// fixed over the viewport, one draw call. lights are soft points that drift away from the mouse.
+// positions use the same maths as the svg bands so they land in the same spots
 
 const TRAIL = 14; // points that make up a shooting star's tail
 const REPEL_RADIUS = 130; // px around the pointer where fireflies get nudged aside
 const REPEL_PUSH = 34; // how far, at most
 
-// --- turning the svg's animation strings into numbers -------------------------------------------
+// svg animation strings -> numbers
 
 const pairs = (text) => text.split(';').map((p) => p.trim().split(/\s+/).map(Number));
 const numbers = (text) => text.split(';').map(Number);
@@ -41,8 +40,7 @@ function even(values, t) {
 }
 const mix = (a, b, f) => a + (b - a) * f;
 
-// values placed at given times (keyTimes). Two equal times make a jump, which is how the
-// shooting stars appear out of nowhere
+// values at given times (keyTimes). two equal times make a jump, which is how the shooting stars pop in
 function keyed(times, values, t) {
   for (let i = 0; i < times.length - 1; i += 1) {
     if (t >= times[i] && t < times[i + 1])
@@ -88,7 +86,7 @@ const STARS = SHOOTING_STARS.map((s) => ({
 
 const COUNT = FIREFLIES.length + STARS.length * TRAIL;
 
-// --- the shaders ----------------------------------------------------------------------------------
+// shaders
 
 const VERTEX = `
   attribute float aSize;
@@ -179,8 +177,8 @@ export default function FireflyCanvas() {
     scene.add(points);
     const camera = new Camera();
 
-    // the page can be scaled up with css zoom on very wide screens, so work out how big a css pixel
-    // is and size the canvas to cover exactly the viewport
+    // the page can be css-zoomed on very wide screens, so work out the size of a css pixel and
+    // cover the viewport exactly
     const site = document.querySelector('.site');
     let width = 0;
     let height = 0;
@@ -216,8 +214,7 @@ export default function FireflyCanvas() {
       frame = 0;
       const time = (now - start) / 1000;
 
-      // where the story is on screen, and how its svg sky is scaled (the same slice-to-fit
-      // rule the svg bands use)
+      // where the story sits on screen and how its svg sky is scaled (same slice-to-fit rule as the svg bands)
       const box = story.getBoundingClientRect();
       const fix = width / box.width; // 1 unless the engine reports pre-zoom sizes
       const top = box.top * fix;

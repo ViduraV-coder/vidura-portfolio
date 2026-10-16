@@ -1,11 +1,8 @@
-// Quick health check for a running copy of the site. Nothing to install, it only needs Node 20+.
-//
-//   npm run build && npm run preview          (in one terminal)
-//   npm run smoke                             (in another, checks http://localhost:4173)
-//   npm run smoke -- https://viduvish.dev     (after a deploy, also checks the certificate,
-//                                              the https redirect and the security headers)
-//
-// It exits with 1 if anything fails, so it can also run in CI.
+// health check for a running copy of the site, needs node 20+ and nothing else
+//   npm run smoke                           checks http://localhost:4173 (after build + preview)
+//   npm run smoke -- https://viduvish.dev   after a deploy, also checks the certificate,
+//                                           the https redirect and the security headers
+// exits 1 if anything fails, so it can run in CI too
 
 import tls from 'node:tls';
 
@@ -26,7 +23,7 @@ async function get(path, options = {}) {
   return res;
 }
 
-// ---------------------------------------------------------------- certificate and redirect
+// certificate and redirect
 
 if (live) {
   section('Certificate');
@@ -69,7 +66,7 @@ if (live) {
   }
 }
 
-// ---------------------------------------------------------------- the page
+// the page
 
 section(`Page  ${base}/`);
 const home = await get('/').catch((err) => err);
@@ -114,7 +111,7 @@ if (script) {
   check(!js.includes('localhost:'), 'no localhost addresses in the script');
 }
 
-// ---------------------------------------------------------------- other files
+// other files
 
 section('Files');
 const cv = await get('/Vidura-Gam-Hewage-CV.pdf');
@@ -150,7 +147,7 @@ check(
   `got ${lost.status}`,
 );
 
-// ---------------------------------------------------------------- headers
+// headers
 
 section('Headers (home page)');
 if (!live) {

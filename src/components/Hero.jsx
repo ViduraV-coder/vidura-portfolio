@@ -15,10 +15,7 @@ export default function Hero() {
 
       <Nav />
 
-      <div
-        data-hero-copy
-        className="absolute bottom-[4%] left-[5%] z-[4] w-[44%] text-cream max-tab:bottom-[6%] max-tab:w-[54%] max-ph:right-5 max-ph:bottom-[26px] max-ph:left-5 max-ph:z-[5] max-ph:w-auto"
-      >
+      <div className="absolute bottom-[4%] left-[5%] z-[4] w-[44%] text-cream max-tab:bottom-[6%] max-tab:w-[54%] max-ph:right-5 max-ph:bottom-[26px] max-ph:left-5 max-ph:z-[5] max-ph:w-auto">
         <div className="inline-flex items-center gap-2.5 rounded-full border border-white/16 bg-[rgba(10,14,40,0.6)] px-4 py-2 font-mono text-[13px] tracking-[0.08em] text-cream backdrop-blur-[10px]">
           <span className="size-2 rounded-full bg-go" />
           {HERO.badge}

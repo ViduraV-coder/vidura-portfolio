@@ -3,11 +3,10 @@
   --lamp: 0.9; /* strength of the lamp glows in the hero (0 to 1) */
 }
 
-/* These element rules sit in the "base" layer so Tailwind's utilities (which come after it) can
-   override them. The scene css further down isn't layered, which is why it always wins over them. */
+/* element rules live in the base layer so tailwind utilities (which come later) can override them. the scene
+   css below isn't layered so it always wins */
 @layer base {
-  /* touch screens flash a coloured box over whatever you tap; the page has its own hover and
-     focus styles, so switch that off everywhere */
+  /* touch screens flash a coloured box on tap, the page has its own hover/focus styles so turn it off */
   * {
     -webkit-tap-highlight-color: transparent;
   }

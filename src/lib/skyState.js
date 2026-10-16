@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from 'react';
 
-// Whether the WebGL fireflies are up and running. While they are, the svg fireflies behind them
-// are switched off, and if WebGL isn't there (or is lost) the svg ones simply carry on.
+// true while the webgl fireflies are running. the svg fireflies behind them switch off then, and carry on
+// if webgl is missing or lost
 let active = false;
 const listeners = new Set();
 

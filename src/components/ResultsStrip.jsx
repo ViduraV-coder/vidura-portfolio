@@ -1,7 +1,6 @@
 import { RESULTS } from '../data/results';
 
-// "35%" -> { before: '', n: '35', after: '%' }. Anything that isn't a whole number with an
-// optional unit (1.2s, 1,200, "Top 3") is shown as it is, without the count-up.
+// "35%" -> { before: '', n: '35', after: '%' }. anything else ("Top 3", 1.2s) is shown as is, no count-up
 function splitValue(value) {
   const m = /^(\D*)(\d+)([^\d.,].*)?$/.exec(value);
   return m ? { before: m[1], n: m[2], after: m[3] || '' } : null;
@@ -18,7 +17,7 @@ export default function ResultsStrip() {
         data-reveal
         className="mt-3 font-display text-[clamp(28px,3vw,38px)] leading-[1.1] font-medium text-balance text-cream [text-shadow:0_1px_12px_rgba(6,10,40,0.7)]"
       >
-        What the work added up to
+        Numbers from my CV
       </h3>
 
       <div className="mt-7 grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-4">

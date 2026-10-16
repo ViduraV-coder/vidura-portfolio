@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import { afterFirstInput, loadMotion, prefersReducedMotion } from '../lib/motion';
 
-// Draws the road while you scroll past it, using a GSAP ScrollTrigger. `pathRef` has to be an svg
-// path with pathLength="1000". Empty when the section top is 80% down the screen, full when its
-// bottom reaches the middle, and it eases after your scroll a little rather than jumping.
+// draws the road as you scroll past it (gsap scrolltrigger). pathRef must be an svg path with
+// pathLength="1000". empty when the section top is 80% down the screen, full when its bottom hits
+// the middle, with a bit of easing so it doesn't jump
 //
-// Below 1000px wide the winding road is swapped for a straight rail down the left. `railRef` is
-// the bright fill inside it: it grows with the scroll, and each .jnode dot lights up as the line
-// reaches it.
+// under 1000px the winding road becomes a straight rail down the left: railRef is the bright fill, it
+// grows with the scroll and each .jnode dot lights up when the line reaches it
 export default function useJourneyScroll(sectionRef, pathRef, railRef) {
   useEffect(() => {
     const section = sectionRef.current;
@@ -19,8 +18,8 @@ export default function useJourneyScroll(sectionRef, pathRef, railRef) {
     const narrow = window.matchMedia('(max-width: 1000px)');
     let lit = nodes.map(() => false);
 
-    // where the rail starts and ends, in px down from the top of the section (offsetTop is
-    // relative to the section because it is position: relative), and where each dot is
+    // where the rail starts and ends in px from the top of the section (offsetTop works because it's
+    // position: relative), and where each dot is
     let railTop = 0;
     let railLen = 1;
     let nodeY = [];
@@ -63,17 +62,17 @@ export default function useJourneyScroll(sectionRef, pathRef, railRef) {
       .then(loadMotion)
       .then(({ gsap }) => {
         if (cancelled) return;
-        // measured here, after the first scroll, not at load: reading positions while the page is
-        // still being built makes the browser lay everything out twice
+        // measured after the first scroll, not at load - reading positions while the page is still being built
+        // makes the browser lay everything out twice
         measure();
         context = gsap.context(() => {
           const run = { progress: 0 };
-          // `tween` is declared first on purpose: if the page is already scrolled past the road when
-          // GSAP finishes loading (a reload part-way down, a jump straight to Contact), onUpdate
-          // fires while the tween is still being created, and a const would not exist yet
+          // tween is declared first on purpose: if the page is already past the road when gsap loads (reload
+          // part-way down, jump to Contact) onUpdate fires while the tween is still being created and a const
+          // wouldn't exist yet
           let tween;
           const total = () => (tween ? tween.scrollTrigger.end - tween.scrollTrigger.start : 1);
-          // scrub: 0.4 makes the line catch up with your scroll over a moment instead of jumping
+          // scrub: 0.4 = the line catches up with your scroll over a moment
           tween = gsap.to(run, {
             progress: 1,
             ease: 'none',

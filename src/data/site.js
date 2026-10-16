@@ -1,15 +1,14 @@
-// text and links for the whole page live in this file, the components only lay them out
+// all the text and links for the page, the components only lay them out
 
-// Only a normal https link is accepted for the booking button. A typo, a link without https://
-// or something odd pasted into the setting is ignored and the default booking page is used, so the
-// button always works and nothing strange can end up in an href.
+// the booking link has to be a normal https url. anything else (typo, no https://, junk) is ignored and
+// the default is used, so the button always works
 function httpsLink(value) {
   if (!value) return '';
   try {
     const url = new URL(value);
     if (url.protocol === 'https:') return url.href;
   } catch {
-    // not a link at all, handled below
+    // not a url, falls through
   }
   if (import.meta.env.DEV)
     console.warn(`VITE_BOOKING_URL ignored, it needs to start with https:// (got "${value}")`);
@@ -24,12 +23,11 @@ export const SITE = {
   year: 2026,
   github: 'https://github.com/ViduraV-coder',
   linkedin: 'https://linkedin.com/in/vidura-vishwanath',
-  // the PDF lives in public/. Replace the file to update it, the link stays the same
+  // the pdf lives in public/, swap the file and the link stays valid
   cv: `${import.meta.env.BASE_URL}Vidura-Gam-Hewage-CV.pdf`,
-  // My Calendly page for the 15-minute call. To use another calendar (Cal.com, a Google appointment
-  // page...) set VITE_BOOKING_URL=https://... in a .env file or in the host's settings, it takes
-  // priority. Make BOOKING_PAGE an empty string and the button opens an email that already says
-  // "I'd like a 15-minute call" instead.
+  // my calendly page. for another calendar (cal.com, a google appointment page...) set
+  // VITE_BOOKING_URL=https://... in .env or the host's settings and that wins. set BOOKING_PAGE to ''
+  // and the button opens a pre-written email instead
   booking: httpsLink(import.meta.env.VITE_BOOKING_URL) || BOOKING_PAGE,
 };
 
@@ -61,16 +59,16 @@ export const NAV = [
 export const NAV_CTA = { href: '#contact', label: "Let's talk" };
 
 export const HERO = {
-  badge: 'TAKING ON NEW UK PROJECTS',
-  lead: 'Full-stack developer crafting fast, thoughtful products, with a soft spot for motion, 3D and late-night debugging.',
+  badge: 'TAKING ON NEW PROJECTS',
+  lead: 'Full-stack developer in London. I build fast websites and web apps, and I like motion, 3D and late-night debugging.',
   primary: { href: '#work', label: 'See my work' },
   secondary: { label: 'Book a 15-min call' },
   cue: 'SCROLL',
 };
 
 export const ABOUT = {
-  eyebrow: '01 — ABOUT',
-  lead: "I'm a full-stack developer who loves the moment a product stops feeling like software and starts feeling like a place. For more than five years I've built and shipped responsive web apps with Next.js, React, Node.js and Supabase, taking client projects alone from the first requirements call to launch, and I care about the small details people feel but never notice.",
+  eyebrow: '01 - ABOUT',
+  lead: "I'm a full-stack developer with more than five years of building and shipping responsive web apps in Next.js, React, Node.js and Supabase. I take client projects on alone, from the first requirements call to launch, and I like sweating the small details.",
   stats: [
     { value: '5+ yrs', label: 'building for the web' },
     { value: 'London', label: "where I'm based" },
@@ -78,13 +76,12 @@ export const ABOUT = {
   ],
 };
 
-// time + name make the little clock pill, color is the glow on the spine dot,
-// eyebrow is the small label above each heading
+// the small label above each heading
 export const CHAPTERS = {
-  work: { time: '21:40', name: 'NIGHTFALL', color: '#8FDCFF', eyebrow: '02 — SELECTED WORK' },
-  toolkit: { time: '23:30', name: 'LANTERNS', color: '#FFB547', eyebrow: '03 — TOOLKIT' },
-  journey: { time: '02:10', name: 'THE LONG ROAD', color: '#E58FD0', eyebrow: '04 — JOURNEY' },
-  contact: { time: '05:50', name: 'FIRST LIGHT', color: '#FFB278', eyebrow: '05 — SAY HELLO' },
+  work: { eyebrow: '02 - SELECTED WORK' },
+  toolkit: { eyebrow: '03 - TOOLKIT' },
+  journey: { eyebrow: '04 - JOURNEY' },
+  contact: { eyebrow: '05 - SAY HELLO' },
 };
 
 export const COPY = {
@@ -98,12 +95,12 @@ export const COPY = {
     lead: 'Five little night scenes, one for each part of the stack, each with its own lamp left on.',
   },
   journey: {
-    caption: 'The long road. Quiet, a little lonely, completely worth it.',
+    caption: 'The long road. Quiet, a bit lonely, and worth it.',
     next: 'Next chapter: your project?',
   },
   contact: {
     caption: 'First light, and the cat slept through all of it.',
-    lead: "I'm taking on new client projects in the UK, and I'm open to the right full-time role. Tell me what you're building and we'll take it from there.",
+    lead: "I'm taking on new client projects and I'm open to the right full-time role. Tell me what you're building.",
     book: 'Book a 15-minute call',
     or: 'or write to me directly',
     cv: 'Download CV',

@@ -1,9 +1,8 @@
 import { SHOW_TESTIMONIALS, TESTIMONIALS } from '../data/testimonials';
 
-// What people say about working with me (data/testimonials.js). The client's quote comes first and
-// is bigger, the colleagues' sit under it. The whole section stays out of the page while
-// SHOW_TESTIMONIALS is false. Once it is on, nothing is shown until a quote has a name; while you
-// work on the site locally the empty slots show as dashed boxes so you can see where they go.
+// "what people say" section, data in data/testimonials.js. client quote first and bigger, colleagues under it.
+// hidden completely while SHOW_TESTIMONIALS is false. once on, a card only shows if it has a name
+// (empty ones are dashed boxes in dev)
 export default function Testimonials() {
   if (!SHOW_TESTIMONIALS) return null;
   const items = import.meta.env.DEV ? TESTIMONIALS : TESTIMONIALS.filter((t) => t.quote && t.name);

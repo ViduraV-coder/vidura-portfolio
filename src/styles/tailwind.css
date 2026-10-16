@@ -1,6 +1,5 @@
-/* Tailwind, without its reset: base.css already does the little resetting this page needs, and a
-   second reset would shift the painted scenes. Utilities sit in their own layer, so plain css
-   (the scenes, the keyframes) always wins over them. */
+/* tailwind without its reset: base.css does the little resetting this page needs and a second reset would
+   shift the painted scenes. utilities are in their own layer so plain css (scenes, keyframes) wins over them */
 @layer theme, base, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);

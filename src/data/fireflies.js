@@ -1,6 +1,5 @@
-// The fireflies and shooting stars drifting through the long night sky behind the work,
-// toolkit, journey and contact chapters. Coordinates are in the sky svg's own units
-// (a 1440 x 6710 canvas); StoryBackdrop slices them into bands.
+// fireflies and shooting stars for the night sky behind work, toolkit, journey and contact.
+// coordinates are in the sky svg's own units (1440 x 6710), StoryBackdrop slices them into bands
 //
 // firefly rows: [cx, cy, r, moveValues, moveDur, moveBegin, blinkValues, blinkDur, blinkBegin]
 

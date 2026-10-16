@@ -2,11 +2,10 @@ import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
-// Two small build-time tweaks to the generated index.html so the first paint doesn't wait:
-// 1. the stylesheet is only ~7 KB gzipped, so it goes straight into a <style> tag instead of
-//    being a separate blocking request
-// 2. the hero background painting is the biggest thing on screen at load, but React only asks for
-//    it once the JS has run, so it's preloaded from the HTML with a high priority
+// two small build tweaks to index.html so first paint doesn't wait:
+// 1. the stylesheet is ~7 KB gzipped, so it goes in a <style> tag instead of a blocking request
+// 2. the hero painting is the biggest thing on screen but react only asks for it after the js runs,
+//    so it's preloaded from the html with high priority
 function fasterFirstPaint() {
   return {
     name: 'faster-first-paint',
@@ -21,15 +20,14 @@ function fasterFirstPaint() {
       if (cssLink) {
         const file = Object.keys(bundle).find((name) => cssLink[1].endsWith(name));
         if (file && bundle[file].source) {
-          // the font urls inside are relative to /assets/, but now they live in the page itself
+          // font urls inside are relative to /assets/ but now they live in the page itself
           const css = String(bundle[file].source).replaceAll('url(./', 'url(./assets/');
           out = out.replace(cssLink[0], `<style>${css}</style>`);
           delete bundle[file];
         }
       }
 
-      // phones get a smaller copy of the picture (see HeroScene.jsx), so each size is preloaded
-      // only on the screens that will use it
+      // phones get a smaller copy of the picture (HeroScene.jsx), so each size is only preloaded where it is used
       const preload = (pattern, media) => {
         const file = Object.keys(bundle).find((name) => pattern.test(name));
         if (!file) return;
@@ -43,13 +41,12 @@ function fasterFirstPaint() {
   };
 }
 
-// Cloudflare Web Analytics: page views without cookies, so no consent banner is needed. It only
-// goes into the page when VITE_CF_ANALYTICS_TOKEN is set (see the README). If the site is on
-// Cloudflare Pages you can also switch it on in the dashboard (Pages > your project > Metrics >
-// Web Analytics) and leave this alone, Cloudflare then adds the same script itself.
+// cloudflare web analytics: page views without cookies, so no consent banner. only added when
+// VITE_CF_ANALYTICS_TOKEN is set (see the README). on cloudflare pages you can switch it on in the
+// dashboard instead (Pages > project > Metrics > Web Analytics) and leave this alone
 function analytics(token) {
-  // Cloudflare's tokens are plain letters and digits. Anything else is left out (with a warning in
-  // the build output), so a typo can't break the page or put odd text into the HTML
+  // tokens are plain letters and digits, anything else is dropped with a build warning so a typo can't
+  // break the page or put odd text into the html
   if (token && !/^[\w-]{16,64}$/.test(token)) {
     console.warn(
       "\n[build] VITE_CF_ANALYTICS_TOKEN doesn't look like a Cloudflare token, so the analytics script was left out.\n",
@@ -83,14 +80,13 @@ export default defineConfig(({ mode }) => {
     );
   }
   return {
-    // relative links, so the build works from any folder (github pages project sites, a sub-directory, the domain root)
+    // relative links so the build works from any folder
     base: './',
     plugins: [react(), tailwindcss(), fasterFirstPaint(), analytics(env.VITE_CF_ANALYTICS_TOKEN)],
     build: {
       // keep the images as real files so the browser can cache them
       assetsInlineLimit: 0,
-      // the one big chunk is Three.js, which loads on demand once someone scrolls towards the night
-      // sky (see StorySparkles.jsx), so it doesn't slow the first load
+      // the one big chunk is three.js, loaded on demand when someone scrolls towards the night sky (StorySparkles.jsx)
       chunkSizeWarningLimit: 600,
     },
   };

@@ -1,11 +1,10 @@
-// the hero painting is four layers that drift at slightly different speeds (cWin, cRoom, cPer, cMon)
+// hero painting = four layers drifting at slightly different speeds (cWin, cRoom, cPer, cMon)
 import { IMG } from '../../assets';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import { Shooting, Twinkle } from './svg';
 
-// On a phone only a slice of the picture is on screen (the person and the desk, roughly 42% to 90%
-// of the way across), so phones get a cut-down copy of the room and of the window's right edge
-// instead of the full pictures. The numbers are where that slice sits inside the full frame.
+// on a phone only a slice of the picture shows (the person and desk, ~42% to 90% across) so phones get
+// cut-down copies of the room and the window's right edge. the numbers are where that slice sits in the full frame
 const PHONE = '(max-width: 700px)';
 const ROOM_FULL = { src: IMG.heroRoom, left: 0, width: '100%' };
 const ROOM_PHONE = { src: IMG.heroRoomPhone, left: '38.038%', width: '53.947%' };

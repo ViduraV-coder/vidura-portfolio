@@ -72,9 +72,6 @@ body {
   .abWrap {
     zoom: 1;
   }
-  .spineL {
-    display: none !important;
-  }
   #work {
     padding-top: 84px !important;
     padding-bottom: 110px !important;
@@ -181,6 +178,11 @@ body {
 @media (max-width: 389px) {
   .abWrap {
     zoom: 0.7;
+  }
+  /* smaller moon, so it stays off the "02 - SELECTED WORK" label */
+  .sGlobal > .sMoon {
+    width: 260px !important;
+    right: -60px !important;
   }
 }
 @media (max-width: 359px) {

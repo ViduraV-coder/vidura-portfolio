@@ -1,6 +1,6 @@
 import { IMG } from '../../assets';
 
-// offset pulls it up and left so the glow of the lantern lands on the left/top point
+// offset pulls it up and left so the glow lands on the left/top point
 export default function Spark({ left, top, width, offset, delay, dx }) {
   return (
     <div

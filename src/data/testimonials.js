@@ -1,14 +1,13 @@
-// Quotes from people I've worked with. Three slots: the first is the client's and is shown
-// larger, the other two are colleagues. A slot with no quote or name stays hidden on the live
-// site (with `npm run dev` it shows as a dashed box, so you can see where it will go).
-// Write the quote without quotation marks (the site adds them). A blank line starts a new paragraph.
+// quotes from people I've worked with. three slots: the first is the client's and shown larger, the other two
+// are colleagues. a slot with no quote and name stays hidden on the live site (a dashed box in `npm run dev`).
+// write the quote without quote marks, the site adds them. a blank line starts a new paragraph
 //   kind     'client' (the featured card, keep it first) or 'colleague'
-//   quote    what they said, in their words
+//   quote    what they said
 //   name     who said it
-//   role     their job title
+//   role     job title
 //   company  where they work
 
-// The whole "What people say" section is switched off for now. Set this to true to bring it back.
+// the whole "What people say" section is off for now, set this to true to bring it back
 export const SHOW_TESTIMONIALS = false;
 
 export const TESTIMONIALS = [

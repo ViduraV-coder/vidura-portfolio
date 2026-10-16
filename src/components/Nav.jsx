@@ -5,8 +5,7 @@ export default function Nav() {
   const menu = useRef(null);
   const [open, setOpen] = useState(false);
 
-  // The mobile menu is a <details>, so it opens without any JS. This only closes it again
-  // on Escape or a tap outside (clicking a link is handled below).
+  // mobile menu is a <details> so it opens without js, this only closes it on Escape or an outside tap
   useEffect(() => {
     const el = menu.current;
     if (!el) return undefined;
@@ -39,8 +38,8 @@ export default function Nav() {
       className="absolute top-6 left-[5%] z-[6] flex items-center justify-between gap-x-[26px] gap-y-2 rounded-full border border-white/16 bg-[rgba(10,14,40,0.58)] py-[9px] pr-[9px] pl-[22px] shadow-[0_14px_40px_-18px_rgba(0,0,0,0.8)] backdrop-blur-[14px] max-tab:top-4 max-tab:right-4 max-tab:left-4 max-ph:top-3 max-ph:right-3 max-ph:left-3 max-ph:flex-nowrap max-ph:py-1.5 max-ph:pr-1.5 max-ph:pl-4"
       aria-label="Main"
     >
-      {/* the logo text is only ~22px tall, so it's padded out to a proper tap size, and the negative
-          margin pulls it back in so the pill doesn't grow. Same trick on the links below */}
+      {/* logo text is ~22px tall so it gets padding for a proper tap target and a negative margin to cancel it out.
+          same on the links below */}
       <a
         className="-my-[11px] flex items-center gap-2.5 py-[11px] font-display text-[20px] font-semibold text-cream max-ph:text-[17px] max-ph:whitespace-nowrap"
         href="#top"
@@ -70,7 +69,7 @@ export default function Nav() {
         {NAV_CTA.label}
       </a>
 
-      {/* the phone and tablet menu is a <details>, so it opens without any JS */}
+      {/* phone / tablet menu, plain <details> */}
       <details
         className="group relative hidden max-tab:block"
         ref={menu}

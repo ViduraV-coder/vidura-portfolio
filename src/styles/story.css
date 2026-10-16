@@ -13,10 +13,9 @@
 .sGlobal > * {
   position: absolute;
 }
-/* The top 140px of the sky fades in from the page colour. This used to be a mask-image on the
-   whole element, which made the browser keep a 9,000px-tall offscreen copy of the sky and
-   re-mask it while scrolling. A plain gradient on top looks identical (the page colour is what
-   sits behind) and costs nothing. */
+/* top 140px of the sky fades in from the page colour. it used to be a mask-image on the whole element, which
+   made the browser keep a 9,000px offscreen copy of the sky and re-mask it while scrolling. a plain gradient on
+   top looks the same and costs nothing */
 .sGlobal::before {
   content: '';
   position: absolute;
@@ -127,34 +126,6 @@
     rgba(255, 176, 160, 0) 72%
   );
   filter: blur(10px);
-}
-.spineL {
-  position: absolute;
-  left: calc(clamp(14px, 2.4vw, 34px) + 5px);
-  top: 96px;
-  bottom: 440px;
-  width: 1px;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgba(243, 233, 210, 0) 0,
-    rgba(243, 233, 210, 0.26) 4%,
-    rgba(243, 233, 210, 0.26) 84%,
-    rgba(255, 190, 130, 0.5) 96%,
-    rgba(255, 190, 130, 0) 100%
-  );
-}
-
-.spineL span {
-  position: absolute;
-  left: -2px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #ffe6b0;
-  box-shadow: 0 0 12px 3px rgba(255, 214, 140, 0.7);
-  animation: spineDot 46s linear infinite;
 }
 
 #work {

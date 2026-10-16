@@ -1,8 +1,5 @@
-import ChapterPill from './ChapterPill';
-
-// pill, small label, big heading and the italic line under it, shared by every chapter. The
-// "size" picks how large the heading is and "dawn" the lighter colours that read better on the
-// pink sky in the contact chapter.
+// label + heading + italic line, used by every chapter
+// size = heading size, dawn = lighter colours for the pink sky in contact
 const TITLE = {
   default: 'mt-4 text-[clamp(40px,5vw,72px)] leading-none tracking-[-0.02em]',
   about: 'mt-[18px] text-[clamp(38px,4.4vw,64px)] leading-[1.04] tracking-[-0.02em]',
@@ -19,7 +16,7 @@ export function Eyebrow({ children, dawn = false }) {
   return (
     <div
       data-reveal
-      className={`font-mono text-[13px] tracking-[0.16em] ${dawn ? 'text-[#e6f7ff] ' + SHADOW.dawn : 'text-sky'}`}
+      className={`font-mono text-[13px] tracking-[0.16em] ${dawn ? 'text-white [text-shadow:0_1px_2px_rgba(44,12,58,0.7),0_0_10px_rgba(44,12,58,0.9)]' : 'text-sky'}`}
     >
       {children}
     </div>
@@ -47,7 +44,6 @@ export default function ChapterIntro({
 }) {
   return (
     <>
-      <ChapterPill time={chapter.time} name={chapter.name} color={chapter.color} dawn={dawn} />
       <Eyebrow dawn={dawn}>{chapter.eyebrow}</Eyebrow>
       <SectionTitle size={size}>{children}</SectionTitle>
       <p

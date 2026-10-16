@@ -1,4 +1,4 @@
-// two rings of text turning in opposite directions. textLength stops a gap opening at the end of each ring
+// two rings of text turning opposite ways, textLength stops a gap opening at the end of each ring
 
 export default function AboutBadge() {
   return (

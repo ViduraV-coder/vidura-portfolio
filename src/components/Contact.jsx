@@ -5,14 +5,13 @@ import ContactBackdrop from './art/ContactBackdrop';
 import ChapterIntro from './ui/ChapterIntro';
 import BookCall from './ui/BookCall';
 import { GHOST_BUTTON } from './ui/classes';
-import SpineNode from './ui/SpineNode';
 
 export default function Contact() {
   const chapter = CHAPTERS.contact;
   const [copyStatus, copy] = useCopyToClipboard();
   const address = useRef(null);
 
-  // if the browser won't let the page copy, select the address so Ctrl+C / Cmd+C finishes the job
+  // clipboard blocked? select the address so ctrl+c still works
   const copyEmail = async () => {
     if (await copy(SITE.email)) return;
     const range = document.createRange();
@@ -27,11 +26,9 @@ export default function Contact() {
       <div className="sProps" aria-hidden="true">
         <ContactBackdrop />
       </div>
-      <SpineNode time={chapter.time} color={chapter.color} />
 
       <div className="relative z-2 mx-auto max-w-[980px] px-[clamp(20px,6.7vw,96px)] pt-[150px] pb-[150px] text-center before:pointer-events-none before:absolute before:inset-[34%_-4%_24%] before:-z-1 before:content-[''] before:[background:radial-gradient(closest-side,rgba(44,12,58,0.74),rgba(44,12,58,0))] max-lap:before:inset-[15%_-10%_22%] max-lap:before:[background:radial-gradient(closest-side,rgba(44,12,58,0.8),rgba(44,12,58,0.5)_62%,rgba(44,12,58,0))] max-tab:pt-[130px] max-ph:px-5 max-ph:pt-[110px] max-ph:pb-[250px] max-ph:before:inset-[8%_-16%_20%]">
-        {/* the sunrise is brightest right behind the small text, so the ::before above puts a soft
-            dark patch behind it, and the text carries a light shadow too */}
+        {/* sunrise is brightest behind the small text, so ::before puts a dark patch behind it and the text gets a shadow */}
         <ChapterIntro chapter={chapter} caption={COPY.contact.caption} size="contact" dawn center>
           Shall we build something <em>together?</em>
         </ChapterIntro>
@@ -105,7 +102,7 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* fades into the dark city so the small print never sits on a bright window light */}
+      {/* fades into the dark city so the small print stays off the bright windows */}
       <footer className="absolute inset-x-0 bottom-0 z-2 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 bg-[linear-gradient(0deg,rgba(5,8,24,0.86),rgba(5,8,24,0.55)_70%,rgba(5,8,24,0))] px-[clamp(20px,6.7vw,96px)] py-[22px] font-mono text-[12px] tracking-[0.06em] text-cream max-ph:justify-center max-ph:pb-[18px] max-ph:text-center">
         <span>
           © {SITE.year} {SITE.name}

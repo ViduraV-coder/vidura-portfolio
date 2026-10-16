@@ -3,8 +3,8 @@ import Foliage from './Foliage';
 import Lantern from './Lantern';
 import Spark from './Spark';
 
-// Everything decorative behind a chapter. Keep the order (children, foliage, sparks, lanterns):
-// responsive.css hides every other lantern on phones with :nth-child(odd).
+// decorations behind a section. order matters: responsive.css hides every other lantern on phones
+// with :nth-child(odd)
 export default function Scenery({ section, children }) {
   const { foliage, sparks, lanterns } = DECOR[section];
   return (

@@ -6,7 +6,6 @@ import JourneyMoon from './art/JourneyMoon';
 import JourneyRoad from './art/JourneyRoad';
 import ChapterIntro from './ui/ChapterIntro';
 import Scenery from './ui/Scenery';
-import SpineNode from './ui/SpineNode';
 
 export default function Journey() {
   const chapter = CHAPTERS.journey;
@@ -20,7 +19,6 @@ export default function Journey() {
       <Scenery section="journey">
         <JourneyMoon />
       </Scenery>
-      <SpineNode time={chapter.time} color={chapter.color} />
 
       <div className="relative z-1 mb-10">
         <ChapterIntro chapter={chapter} caption={COPY.journey.caption}>
@@ -30,7 +28,7 @@ export default function Journey() {
 
       <div className="relative z-1" ref={rows}>
         <JourneyRoad drawRef={road} />
-        {/* the straight version of the road, for tablets and phones (hidden on wide screens) */}
+        {/* straight road for tablets and phones */}
         <div
           className="absolute top-2 bottom-[70px] left-[13px] hidden w-0 border-0 border-l-[3px] border-dotted border-[rgba(243,233,210,0.5)] max-tab:block"
           ref={rail}
@@ -46,10 +44,9 @@ export default function Journey() {
               className={`relative flex h-[300px] items-center max-tab:block max-tab:h-auto max-tab:pb-[22px] max-tab:pl-[46px] ${right ? 'justify-end' : ''}`}
               key={step.title}
             >
-              {/* "jnode" is how useJourneyScroll finds the dots, it adds is-lit once the line gets there */}
+              {/* useJourneyScroll finds the dots by "jnode" and adds is-lit */}
               <div className="jnode absolute top-[150px] left-1/2 size-7 [transform:translate(-50%,-50%)] rounded-full border-[6px] border-accent bg-deep max-tab:top-[34px] max-tab:left-3.5 max-tab:transition-[background,box-shadow] max-tab:duration-300 max-tab:ease-[ease] max-tab:[&.is-lit]:bg-accent max-tab:[&.is-lit]:shadow-[0_0_0_6px_rgba(255,181,71,0.16),0_0_20px_rgba(255,181,71,0.65)]" />
-              {/* a faint navy tint under the glass keeps the small text readable where the scene gets brighter.
-                  Below 1000px the cards slide over the moon, so the tint is much stronger there */}
+              {/* navy tint under the glass for readability, stronger under 1000px where the cards slide over the moon */}
               <article
                 data-reveal={right ? 'right' : 'left'}
                 className={`w-full max-w-[440px] rounded-3xl border border-[rgba(255,255,255,0.16)] p-[24px_28px] shadow-[0_24px_48px_-26px_rgba(0,0,0,0.8)] backdrop-blur-[14px] [background:linear-gradient(rgba(10,14,40,0.3),rgba(10,14,40,0.3)),rgba(255,255,255,0.08)] max-tab:m-0 max-tab:w-auto max-tab:max-w-[640px] max-tab:[background:linear-gradient(rgba(10,14,40,0.72),rgba(10,14,40,0.72)),rgba(255,255,255,0.08)] ${right ? 'mr-5' : 'ml-5'}`}

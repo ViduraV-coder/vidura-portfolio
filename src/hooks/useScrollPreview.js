@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 
-// Hover a work card and its screenshot scrolls down the page, pauses, scrolls back up and repeats.
-// The scrolling itself is a css animation (work.css) that runs while the card has the
-// "is-previewing" class. This hook adds the way out: when the pointer leaves, the page eases
-// back to the top instead of jumping there. Keyboard focus counts as hovering.
+// hover a work card and its screenshot scrolls down the page, pauses, scrolls back up and repeats.
+// the scrolling is a css animation (animations.css) that runs while the card has "is-previewing".
+// this hook is the way out: when the pointer leaves, the page eases back to the top instead of
+// jumping. keyboard focus counts as hover
 export default function useScrollPreview() {
   return useMemo(() => {
     const shotIn = (card) => card.querySelector('.wframe__shot');

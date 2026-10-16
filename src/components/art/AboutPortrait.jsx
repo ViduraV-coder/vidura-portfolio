@@ -1,4 +1,4 @@
-// head and body are separate layers so they can move on their own; the eyelids blink and the glasses get a glint
+// head and body are separate layers so they move on their own; eyelids blink, glasses glint
 import { IMG } from '../../assets';
 import { Shooting, Twinkle } from './svg';
 

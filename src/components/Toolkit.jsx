@@ -2,7 +2,6 @@ import { CHAPTERS, COPY } from '../data/site';
 import { TOOLS } from '../data/toolkit';
 import ChapterIntro from './ui/ChapterIntro';
 import Scenery from './ui/Scenery';
-import SpineNode from './ui/SpineNode';
 import ToolCard from './ToolCard';
 
 export default function Toolkit() {
@@ -10,7 +9,6 @@ export default function Toolkit() {
   return (
     <section id="toolkit" className="chapSec">
       <Scenery section="toolkit" />
-      <SpineNode time={chapter.time} color={chapter.color} />
 
       <div className="relative z-1 mx-auto mb-20 max-w-[760px] text-center max-tab:mb-[60px] max-ph:mb-11">
         <ChapterIntro chapter={chapter} caption={COPY.toolkit.caption} center>

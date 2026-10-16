@@ -1,15 +1,12 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import useMediaQuery from '../../hooks/useMediaQuery';
 
-// Three.js is a big download and nobody sees the night sky until they scroll down to it, so it
-// only loads once the story is about a screen and a half away. It is skipped on phones (where the
-// svg lights are paused while you scroll to keep things smooth), for people who ask for less
-// motion, and wherever WebGL isn't available, and in all those cases the svg lights stay.
+// three.js is big and nobody sees the night sky until they scroll, so it only loads when the story is
+// ~1.5 screens away. skipped on phones, with reduced motion and without webgl (the svg lights stay then)
 const FireflyCanvas = lazy(() => import('./FireflyCanvas'));
 const FAST_ONLY = { failIfMajorPerformanceCaveat: true };
 
-// "failIfMajorPerformanceCaveat" makes the browser say no when WebGL would be drawn in software
-// (a machine with no graphics acceleration): there the svg lights are the better choice
+// failIfMajorPerformanceCaveat = say no when webgl would run in software (no gpu), the svg lights are better there
 function hasWebGL() {
   try {
     const probe = document.createElement('canvas');
@@ -41,8 +38,7 @@ export default function StorySparkles() {
 
   if (!roomy || calm || !near) return null;
 
-  // the wrapper clips the fixed canvas to the story, so the lights never spill over the sections
-  // above and below
+  // wrapper clips the fixed canvas to the story so the lights never spill over neighbouring sections
   return (
     <div
       className="pointer-events-none absolute inset-0 z-[1] [clip-path:inset(0)]"

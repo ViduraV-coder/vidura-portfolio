@@ -28,9 +28,6 @@ export default function App() {
         <div className="story" id="story">
           <StoryBackdrop />
           <StorySparkles />
-          <div className="spineL" aria-hidden="true">
-            <span />
-          </div>
           <Work />
           <Toolkit />
           <Journey />

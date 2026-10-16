@@ -1,8 +1,8 @@
 import { IMG } from '../assets';
 
-// Screenshots: put a picture of each site in src/assets/shots/, named after the project's slug
-// (st-anthonys.webp, purehydro.png, ...). It replaces the wireframe, no other change needed.
-// Use the whole home page as one tall picture: on hover the card scrolls through it, top to bottom.
+// screenshots: drop a picture of each site in src/assets/shots/ named after the slug (st-anthonys.webp,
+// purehydro.png...) and it replaces the wireframe. use the whole home page as one tall picture, the card
+// scrolls through it on hover
 const shots = import.meta.glob('../assets/shots/*.{jpg,jpeg,png,webp,avif}', {
   eager: true,
   import: 'default',
@@ -12,13 +12,12 @@ const shot = (slug) => {
   return match ? match[1] : null;
 };
 
-// Each project can also carry:
-//   delivered  a few short things that were built, shown under the description
-//   result     a real figure the client has confirmed, e.g. 'Enquiries up 40% in 3 months'.
-//              Leave it out until there is one: nothing is shown without it, and the card
-//              adds a "Result" line by itself once it is filled in.
-// Layout on a wide screen: a 12-column grid, `span` is how many columns a card takes. Two cards share
-// a row (7 + 5 or 5 + 7) or one card takes the whole row (12). Below ~970px the grid is one column.
+// optional per project:
+//   delivered  short list of what was built, shown under the description
+//   result     a figure the client has confirmed, e.g. 'Enquiries up 40% in 3 months'. leave it out
+//              until there is one, the card adds a "Result" line by itself when it is filled in
+// wide screens use a 12-column grid and `span` is how many columns a card takes: two cards share a row
+// (7 + 5 or 5 + 7) or one takes all 12. under ~970px it is one column
 export const PROJECTS = [
   {
     n: '01',
@@ -48,7 +47,7 @@ export const PROJECTS = [
     title: 'Purehydro',
     domain: 'purehydro.lk',
     url: 'https://purehydro.lk',
-    desc: 'A Webflow site with the enquiry and data plumbing taken care of behind the forms.',
+    desc: 'A Webflow site with the enquiry forms and data handling set up behind it.',
     delivered: [
       'Responsive Webflow build',
       'Enquiries routed into the CRM',

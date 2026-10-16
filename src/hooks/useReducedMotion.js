@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-// base.css already stops the css animations for reduced motion, but svg <animate> tags
-// ignore that, so pause those here (and resume if the setting is switched off).
+// base.css already stops css animations for reduced motion but svg <animate> ignores that, so pause
+// those here (and resume if the setting is switched off)
 export default function useReducedMotion() {
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');

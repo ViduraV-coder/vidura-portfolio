@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
 
-// The painted scenes use svg <animate> tags, and the browser keeps running every one of them
-// even when the picture is miles off screen. Add it all up and an idle page was using a big slice
-// of the main thread (worse on phones), so each svg is paused while it's out of view and carries
-// on once it scrolls back in.
+// the painted scenes use svg <animate> and the browser runs every one of them even when the picture is far
+// off screen. an idle page was eating a big slice of the main thread (worse on phones), so each svg is
+// paused while out of view and resumes when it scrolls back in
 //
-// On touch screens they also hold still while the page is actually moving. Re-drawing a dozen
-// glowing scenes every frame on top of scrolling is what made the Tools section stutter on
-// phones, and nobody can see a firefly twinkle while a thumb is flinging the page anyway. A short
-// moment after the scrolling stops they pick up exactly where they left off. The matching CSS
-// loops are held by the "is-scrolling" class (see animations.css).
+// on touch screens they also hold still while the page is moving. redrawing a dozen glowing scenes every
+// frame on top of scrolling made the Tools section stutter on phones, and nobody sees a firefly twinkle
+// while flinging the page anyway. they pick up again shortly after scrolling stops. the css loops follow
+// the "is-scrolling" class (animations.css)
 export default function usePauseOffscreenSvg() {
   useEffect(() => {
     if (!('IntersectionObserver' in window)) return undefined;
@@ -44,8 +42,8 @@ export default function usePauseOffscreenSvg() {
         });
       },
       {
-        // start them a little before they scroll into view so nothing visibly "wakes up". Phone
-        // cards are tall, so a big margin would keep the neighbours above and below running too.
+        // start slightly before they scroll in so nothing visibly wakes up. phone cards are tall, a big margin
+        // would keep the neighbours above and below running too
         rootMargin: phone.matches ? '80px 0px' : '200px 0px',
       },
     );

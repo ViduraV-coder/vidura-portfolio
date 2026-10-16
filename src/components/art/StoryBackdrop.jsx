@@ -11,14 +11,12 @@ import { BAND_EDGES, PAD_BOTTOM, PAD_TOP } from '../../data/skyBands';
 import { useSkyActive } from '../../lib/skyState';
 import { Fireflies, Shooting } from './svg';
 
-// The sky used to be one svg as tall as the whole page. A browser can only pause svg animations
-// for a whole svg at a time, and a page-sized one is always "on screen" somewhere, so all 130-odd
-// fireflies kept animating no matter where you were (and phones felt it while scrolling).
-// Cutting the sky into bands lets usePauseOffscreenSvg put the ones you can't see to sleep.
-// (Band edges are in data/skyBands.js.)
+// the sky used to be one svg as tall as the page. browsers only pause svg animations per svg and a
+// page-sized one is always on screen somewhere, so all ~130 fireflies ran all the time (phones felt it).
+// bands let usePauseOffscreenSvg sleep the ones you can't see. edges are in data/skyBands.js
 
-// "off" hides a band while the WebGL fireflies are running. A hidden svg counts as off screen, so
-// usePauseOffscreenSvg stops its animations too, and they wake up again if WebGL goes away.
+// "off" hides a band while the webgl fireflies run. hidden counts as off screen so usePauseOffscreenSvg
+// stops it too, and it wakes up again if webgl goes away
 function SkyBand({ from, to, off }) {
   const top = Math.max(0, from - PAD_TOP);
   const bottom = Math.min(SKY_HEIGHT, to + PAD_BOTTOM);

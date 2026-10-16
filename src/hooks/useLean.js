@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 
-// While a mouse is over the element, --lx and --ly go from -1 to 1 across it (left to right,
-// top to bottom). interactions.css uses them to nudge the artwork. Touch is ignored.
-// The values are written straight to the element, so nothing re-renders.
+// while the mouse is over the element --lx and --ly go from -1 to 1 across it (left to right, top to
+// bottom) and interactions.css uses them to nudge the artwork. touch is ignored. values are set
+// straight on the element so nothing re-renders
 export default function useLean() {
   return useMemo(
     () => ({

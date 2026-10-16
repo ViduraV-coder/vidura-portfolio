@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-// returns [status, copy]. status is 'idle', 'copied' or 'failed' and goes back to 'idle' after a
-// couple of seconds, so the button can say "Copied!" (or ask for a manual copy) and then reset
+// returns [status, copy]. status is 'idle', 'copied' or 'failed' and drops back to 'idle' after a couple of seconds
 export default function useCopyToClipboard(resetAfter = 2000) {
   const [status, setStatus] = useState('idle');
   const timer = useRef(0);

@@ -1,12 +1,12 @@
-// The figures here come straight from my CV (Tetrad Global and Squarcle). Add a result per
-// project in work.js as clients confirm them, and change or add tiles here whenever.
+// figures from my CV (Tetrad Global, Squarcle). add a result per project in work.js as clients
+// confirm them, and edit these tiles whenever
 export const RESULTS = [
   {
     value: '35%',
     label: 'faster load time after bug fixing and tuning',
-    where: 'Tetrad Global, 2024 – 26',
+    where: 'Tetrad Global, 2024 - 26',
   },
-  { value: '20%', label: 'better site structure and performance', where: 'Squarcle, 2021 – 23' },
+  { value: '20%', label: 'better site structure and performance', where: 'Squarcle, 2021 - 23' },
   {
     value: '6',
     label: 'client sites and web apps launched end to end',

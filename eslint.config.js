@@ -15,12 +15,12 @@ export default [
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
     rules: {
-      // components used only in JSX look unused to eslint, so ignore capitalised names
+      // capitalised names only used in JSX look unused to eslint
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
   {
-    // these run in node
+    // node files
     files: ['vite.config.js', 'eslint.config.js', 'scripts/**/*.mjs'],
     languageOptions: { globals: globals.node },
   },

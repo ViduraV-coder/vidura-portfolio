@@ -1,7 +1,7 @@
 import { Fireflies, Twinkle } from '../svg';
 
-// the oil lamps round the rangoli flicker one by one. The lamps in the temple wall and the
-// windows of the tower flicker in two shared groups, so the whole thing stays light.
+// oil lamps round the rangoli flicker one by one. the wall lamps and tower windows flicker in two
+// shared groups to keep it cheap
 // cx, cy, rx, ry, flicker seconds, delay
 const DIYAS = [
   [1260, 958, 40, 40, 2.8, -0.6],

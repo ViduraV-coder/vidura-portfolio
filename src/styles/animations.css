@@ -330,15 +330,6 @@
   }
 }
 
-@keyframes spineDot {
-  0% {
-    top: 3%;
-  }
-  100% {
-    top: 96%;
-  }
-}
-
 /* a page scrolling down and back up inside its browser window */
 @keyframes shotScroll {
   0%,
@@ -355,10 +346,9 @@
   }
 }
 
-/* While a phone is being scrolled the background loops (drifting mist, rising sparks, swaying
-   leaves, twinkling stars) hold still, then carry on from the same spot, and so do the slow zoom
-   behind each work card and the self-scrolling screenshots in them. usePauseOffscreenSvg adds and
-   removes the class. The content itself is untouched. */
+/* while a phone is scrolling the background loops (mist, sparks, leaves, stars) freeze and carry on from the
+   same spot afterwards, same for the slow zoom behind each work card and the self-scrolling screenshots.
+   usePauseOffscreenSvg adds and removes the class, the content itself is untouched */
 html.is-scrolling .sGlobal *,
 html.is-scrolling .sProps *,
 html.is-scrolling .cardArt,

@@ -1,6 +1,6 @@
-// Where the foliage, floating sparks and tool lanterns sit in each section.
-// left/top are percentages of the section so they stretch with the page. offset (px) pulls the
-// element up and left so its glow sits on that point.
+// where the foliage, sparks and tool lanterns go in each section
+// left/top are % of the section so they stretch with it, offset (px) pulls the element up and left
+// so its glow sits on the point
 export const DECOR = {
   work: {
     foliage: [

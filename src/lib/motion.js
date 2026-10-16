@@ -1,14 +1,12 @@
-// GSAP and ScrollTrigger are kept out of the first load. The page is fully usable without them
-// (nothing is hidden until they are running), and they download the moment someone first scrolls,
-// touches or presses a key, which is long before the animations have anything to do.
+// gsap + scrolltrigger stay out of the first load. the page works without them (nothing is hidden until
+// they run) and they download on the first scroll, touch or key press, well before anything needs animating
 
 let loaded;
 
-// Clicking a link like "#work" can be the very first thing someone does on the page. The browser
-// starts scrolling smoothly, then GSAP arrives and ScrollTrigger's first measuring pass puts the
-// page back where it was, which cancels the scroll, so the click seems to do nothing. A jump is
-// remembered here and finished once ScrollTrigger has settled. Any scrolling by the person
-// themselves cancels it, so it never drags them back.
+// clicking a link like "#work" can be the first thing someone does. the browser starts a smooth scroll,
+// then gsap arrives and scrolltrigger's first measuring pass puts the page back, cancelling it, so the
+// click looks dead. the jump is remembered here and finished once scrolltrigger has settled. any
+// scrolling by the person cancels it so it never drags them back
 let jump = null;
 window.addEventListener('hashchange', () => {
   jump = { hash: location.hash, at: performance.now() };
@@ -27,7 +25,7 @@ function finishJump() {
   try {
     id = decodeURIComponent(jump.hash.slice(1));
   } catch {
-    // a hand-typed address with a broken % sequence, there is nothing to scroll to
+    // hand-typed address with a broken % sequence, nothing to scroll to
   }
   const target = id && document.getElementById(id);
   if (target && Math.abs(target.getBoundingClientRect().top) > 8) target.scrollIntoView();
@@ -50,8 +48,8 @@ export function loadMotion() {
 export const prefersReducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// resolves on the first sign that someone is using the page (straight away if the browser
-// reopened it part-way down)
+// resolves on the first sign someone is using the page (straight away if the browser reopened it
+// part-way down)
 export function afterFirstInput() {
   return new Promise((resolve) => {
     if (window.scrollY > 0) {

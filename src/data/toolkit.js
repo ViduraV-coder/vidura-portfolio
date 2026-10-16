@@ -2,7 +2,7 @@
 export const TOOLS = [
   {
     name: 'Frontend',
-    tag: 'Interfaces that feel alive.',
+    tag: 'What people see and click.',
     chips: [
       'React',
       'Next.js',
@@ -19,7 +19,7 @@ export const TOOLS = [
   },
   {
     name: 'Backend',
-    tag: 'Calm, reliable foundations.',
+    tag: 'APIs, databases and auth.',
     chips: [
       'Node.js',
       'Express',
@@ -36,7 +36,7 @@ export const TOOLS = [
   },
   {
     name: 'Cloud and tooling',
-    tag: 'Ship it, watch it, sleep well.',
+    tag: 'Deploys, CI and keeping it up.',
     chips: ['Docker', 'AWS', 'CI/CD', 'Git', 'GitHub', 'Debugging', 'SEO basics'],
     offset: 18,
     delay: -3.4,
@@ -44,7 +44,7 @@ export const TOOLS = [
   },
   {
     name: 'Motion and 3D',
-    tag: 'Where the magic happens.',
+    tag: 'Animation and 3D in the browser.',
     chips: ['Three.js', 'React Three Fiber', 'GSAP', 'Framer Motion'],
     offset: 0,
     delay: -5.1,
@@ -52,7 +52,7 @@ export const TOOLS = [
   },
   {
     name: 'CMS and integrations',
-    tag: 'Sites that bring the leads in.',
+    tag: 'CMS builds and lead flows.',
     chips: ['WordPress', 'Shopify', 'Webflow', 'Framer', 'GoHighLevel', 'CRM + API integrations'],
     offset: 56,
     delay: -2.6,

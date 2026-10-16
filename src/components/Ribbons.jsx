@@ -13,8 +13,7 @@ const VARIANTS = {
   },
 };
 
-// list is rendered twice and the track slides by half its width (tickL / tickR keyframes),
-// so the loop never visibly jumps
+// list is rendered twice and the track slides half its width (tickL / tickR) so the loop never jumps
 function Ribbon({ variant, items }) {
   const v = VARIANTS[variant];
   return (
