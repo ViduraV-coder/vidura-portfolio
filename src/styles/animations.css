@@ -355,3 +355,25 @@ html.is-scrolling .cardArt,
 html.is-scrolling .wframe__shot {
   animation-play-state: paused !important;
 }
+
+/* hero underline draws itself, and the badge dot sends out a ring */
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 1.03;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dotPing {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  75%,
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}

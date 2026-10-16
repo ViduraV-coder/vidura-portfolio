@@ -12,7 +12,8 @@ Live at <https://viduvish.dev>
 
 ## What's on the page
 
-- Hero: a painted, lamplit attic with animated lights and a "Book a 15-minute call" button
+- Hero: a painted, lamplit attic with animated lights and a "Book a 15-minute call" button. The
+  underline in the heading draws itself and the green dot in the badge pulses
 - About: a short intro with an animated portrait
 - Work: six projects with real screenshots that scroll on hover, a list of what I delivered on
   each, and a few numbers from my CV
@@ -135,14 +136,14 @@ and networks will differ.
 
 |                          | Mobile (slow 4G, 4x slower CPU) | Desktop               |
 | ------------------------ | ------------------------------- | --------------------- |
-| Performance              | 80 (runs: 80, 81, 80)           | 97 (runs: 97, 99, 97) |
+| Performance              | 81 (runs: 81, 81, 81)           | 97 (runs: 97, 97, 97) |
 | Accessibility            | 100                             | 100                   |
 | Best practices           | 100                             | 100                   |
 | SEO                      | 100                             | 100                   |
 | First Contentful Paint   | 2.7 s                           | 0.6 s                 |
 | Largest Contentful Paint | 4.2 s                           | 1.2 s                 |
-| Total Blocking Time      | 128 ms                          | 18 ms                 |
-| Cumulative Layout Shift  | 0                               | 0.007                 |
+| Total Blocking Time      | 112 ms                          | 20 ms                 |
+| Cumulative Layout Shift  | 0.005                           | 0.007                 |
 | Speed Index              | 2.7 s                           | 0.7 s                 |
 
 Mobile performance is the one I want to improve. The biggest paint is the hero painting and most of
@@ -157,8 +158,8 @@ above are what someone gets before any animation code arrives.
 
 | File                              | Size         | Gzip   | When                                                 |
 | --------------------------------- | ------------ | ------ | ---------------------------------------------------- |
-| `index.html` (stylesheet inlined) | 67 kB        | 14 kB  | first load                                           |
-| Main script (React and the page)  | 321 kB       | 87 kB  | first load                                           |
+| `index.html` (stylesheet inlined) | 68 kB        | 14 kB  | first load                                           |
+| Main script (React and the page)  | 321 kB       | 88 kB  | first load                                           |
 | GSAP + ScrollTrigger              | 110 kB       | 44 kB  | after the first scroll or key press                  |
 | Three.js fireflies                | 517 kB       | 128 kB | near the story section, wide screens with real WebGL |
 | Fonts (seven woff2 files)         | 208 kB total |        | first load                                           |
