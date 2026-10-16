@@ -7,8 +7,8 @@
 //   role     job title
 //   company  where they work
 
-// the whole "What people say" section is off for now, set this to true to bring it back
-export const SHOW_TESTIMONIALS = false;
+// set this to false to hide the whole "What people say" section
+export const SHOW_TESTIMONIALS = true;
 
 export const TESTIMONIALS = [
   { kind: 'client', quote: '', name: '', role: '', company: '' },
@@ -21,5 +21,11 @@ It's great to see how you combine your technical skills with an understanding of
     role: 'Graphic Designer, UI/UX',
     company: 'Squarcle',
   },
-  { kind: 'colleague', quote: '', name: '', role: '', company: '' },
+  {
+    kind: 'colleague',
+    quote: `Vidura is a developer I trust completely. We've teamed up on many websites and backend builds, and he consistently brings deep skill, steady follow-through, and a genuine appetite for finding better ways to solve problems. Long before AI tools came along, his creativity helped us ship front-end features that stood out. I'd recommend him to anyone without a second thought.`,
+    name: 'Dilsara Kulasinghe',
+    role: 'Founder & Principal Solutions Architect',
+    company: 'Tetrad Global (Pvt) Ltd',
+  },
 ];

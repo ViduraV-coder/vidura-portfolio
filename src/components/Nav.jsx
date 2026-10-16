@@ -44,8 +44,20 @@ export default function Nav() {
         className="-my-[11px] flex items-center gap-2.5 py-[11px] font-display text-[20px] font-semibold text-cream max-ph:text-[17px] max-ph:whitespace-nowrap"
         href="#top"
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z" fill="#FFB547" />
+        {/* a cat's head with the initials on its face, the same drawing as public/favicon.svg */}
+        <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path
+            d="M3.4 13.2 6.6 3.4 13.6 8Q16 7.3 18.4 8L25.4 3.4 28.6 13.2Q30 16.5 30 20.4 30 28.8 16 28.8 2 28.8 2 20.4 2 16.5 3.4 13.2Z"
+            fill="#ffb547"
+            stroke="#ffb547"
+            strokeWidth="1.4"
+            strokeLinejoin="round"
+          />
+          <path d="M6.9 9.2 7.3 6.4 10 8.1zM25.1 9.2 24.7 6.4 22 8.1z" fill="#ffe2a8" />
+          <g stroke="#1a1740" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M7.4 15.4 11 23.4 14.6 15.4" />
+            <path d="M24.9 17.4A4.4 4.4 0 1 0 25.3 20.2H21" />
+          </g>
         </svg>
         {SITE.name}
       </a>

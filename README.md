@@ -16,7 +16,7 @@ Live at <https://viduvish.dev>
   underline in the heading draws itself and the green dot in the badge pulses
 - About: a short intro with an animated portrait
 - Work: six projects with real screenshots that scroll on hover, a list of what I delivered on
-  each, and a few numbers from my CV
+  each, a few numbers from my CV, and quotes from two people I've worked with
 - Toolkit: the five areas I work in (frontend, backend, cloud and tooling, motion and 3D, CMS and
   integrations)
 - Journey: study and work as a timeline that draws itself as you scroll
@@ -93,8 +93,9 @@ src/
 - Screenshots: `src/assets/shots/<slug>.webp`, named after the project's slug in `work.js`
   (`st-anthonys`, `purehydro`, `fletching`, `imedra`, `natyadarshitha`, `willpower`). Use the whole
   home page as one tall picture, about 1440px wide. The card scrolls through it on hover.
-- Testimonials: the section is switched off for now. Fill in the quotes in
-  `src/data/testimonials.js` and set `SHOW_TESTIMONIALS` to `true` to bring it back.
+- Testimonials: `src/data/testimonials.js`. Two colleague quotes are in. The client slot is empty
+  and stays hidden until it has a quote and a name. Set `SHOW_TESTIMONIALS` to `false` to hide the
+  whole section.
 - CV: replace `public/Vidura-Gam-Hewage-CV.pdf` with a file of the same name
 - Accent colour: one variable at the top of `src/styles/base.css`
 - Domain: the addresses in `index.html`, `public/robots.txt` and `public/sitemap.xml` point at
