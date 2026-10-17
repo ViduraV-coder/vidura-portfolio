@@ -9,7 +9,7 @@ const TITLE = {
 
 const SHADOW = {
   night: '[text-shadow:0_1px_12px_rgba(6,10,40,0.7)]',
-  dawn: '[text-shadow:0_1px_2px_rgba(44,12,58,0.4),0_0_16px_rgba(44,12,58,0.5)]',
+  dawn: '[text-shadow:0_1px_2px_rgba(44,12,58,0.55),0_0_16px_rgba(44,12,58,0.7)]',
 };
 
 export function Eyebrow({ children, dawn = false }) {
@@ -48,7 +48,7 @@ export default function ChapterIntro({
       <SectionTitle size={size}>{children}</SectionTitle>
       <p
         data-reveal
-        className={`mt-5 max-w-[540px] font-display text-[clamp(19px,1.6vw,23px)] leading-[1.45] font-normal italic ${center ? 'mx-auto' : ''} ${dawn ? 'text-balance text-[#fbf0da] ' + SHADOW.dawn : 'text-[#ede5d0] ' + SHADOW.night}`}
+        className={`mt-5 max-w-[540px] font-display text-[clamp(19px,1.6vw,23px)] leading-[1.45] font-normal italic ${center ? 'mx-auto' : ''} ${dawn ? 'text-balance text-[#fff5e2] ' + SHADOW.dawn : 'text-[#ede5d0] ' + SHADOW.night}`}
       >
         {caption}
       </p>

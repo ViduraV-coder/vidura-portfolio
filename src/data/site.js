@@ -114,4 +114,5 @@ export const FOOTER = {
   paintedWith: 'Painted with',
   stack: ['React', 'Three.js', 'GSAP', 'Tailwind'],
   backToTop: 'Back to top ↑',
+  optimized: 'Optimized with Claude',
 };
