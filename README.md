@@ -78,7 +78,7 @@ scripts/smoke.mjs    post-deploy health check (files, headers, certificate)
 src/
   data/                all the words and numbers, start here (site, work, results, journey, toolkit ...)
   components/          one file per section, plus cards, small ui pieces and the painted scenes (art/)
-  hooks/               scroll, motion, clipboard and media-query hooks
+  hooks/               scroll, motion, lazy picture loading, clipboard and media-query hooks
   lib/motion.js        loads GSAP + ScrollTrigger after the first scroll or key press
   styles/              Tailwind setup, keyframes, scenery and responsive rules
   assets/              painted images (webp), project screenshots (shots/) and bundled fonts
@@ -129,7 +129,7 @@ policy.
 
 ## Test results
 
-Measured on 16 October 2026 against the production build, served with gzip and the headers from
+Measured on 20 October 2026 against the production build, served with gzip and the headers from
 `public/_headers`. These are lab numbers from a cloud sandbox, so use them as a guide. Real devices
 and networks will differ.
 
@@ -137,19 +137,22 @@ and networks will differ.
 
 |                          | Mobile (slow 4G, 4x slower CPU) | Desktop               |
 | ------------------------ | ------------------------------- | --------------------- |
-| Performance              | 81 (runs: 81, 81, 81)           | 97 (runs: 97, 97, 97) |
+| Performance              | 83 (runs: 83, 84, 82)           | 98 (runs: 98, 97, 99) |
 | Accessibility            | 100                             | 100                   |
 | Best practices           | 100                             | 100                   |
 | SEO                      | 100                             | 100                   |
-| First Contentful Paint   | 2.7 s                           | 0.6 s                 |
-| Largest Contentful Paint | 4.2 s                           | 1.2 s                 |
-| Total Blocking Time      | 112 ms                          | 20 ms                 |
-| Cumulative Layout Shift  | 0.005                           | 0.007                 |
-| Speed Index              | 2.7 s                           | 0.7 s                 |
+| First Contentful Paint   | 2.4 s                           | 0.5 s                 |
+| Largest Contentful Paint | 3.9 s                           | 1.2 s                 |
+| Total Blocking Time      | 170 ms                          | 30 ms                 |
+| Cumulative Layout Shift  | 0.003                           | 0.006                 |
+| Speed Index              | 2.4 s                           | 0.7 s                 |
 
-Mobile performance is the one I want to improve. The biggest paint is the hero painting and most of
-the first load is images, which Lighthouse's slow-phone profile punishes. Lazy loading the images
-further down the page is the next thing to try.
+Mobile performance is still the one I want to improve. The biggest paint is the hero painting, and
+Lighthouse's slow-phone profile punishes every image on the way to it. The big pictures further down
+the page (project cards, tool scenes, the sunrise) are lazy images, so they stay out of the first
+load. The moment someone scrolls or presses a key they're told to load anyway, which is long before
+anyone reaches them, so nothing pops in while scrolling. The headline font is preloaded as well.
+Total blocking time moves around a lot between runs here (100 to 270 ms), so treat it as a range.
 
 The first load doesn't include Three.js or GSAP. They download after the first scroll or key press,
 and Three.js only on screens wider than 700px with motion allowed and real WebGL. So the numbers
@@ -160,15 +163,15 @@ above are what someone gets before any animation code arrives.
 | File                              | Size         | Gzip   | When                                                 |
 | --------------------------------- | ------------ | ------ | ---------------------------------------------------- |
 | `index.html` (stylesheet inlined) | 68 kB        | 14 kB  | first load                                           |
-| Main script (React and the page)  | 321 kB       | 88 kB  | first load                                           |
+| Main script (React and the page)  | 326 kB       | 90 kB  | first load                                           |
 | GSAP + ScrollTrigger              | 110 kB       | 44 kB  | after the first scroll or key press                  |
 | Three.js fireflies                | 517 kB       | 128 kB | near the story section, wide screens with real WebGL |
 | Fonts (seven woff2 files)         | 208 kB total |        | first load                                           |
-| Images (44 webp files)            | 2.7 MB total |        | mostly with the page, screenshots lazily             |
+| Images (44 webp files)            | 2.7 MB total |        | hero and first screens at once, the rest lazily      |
 
-The first load comes to about 2.0 MB on mobile and 2.2 MB on desktop (41 and 43 requests, as
-Lighthouse counts them), and 1.7 MB of that is the painted images. The whole `dist/` folder is
-4.2 MB.
+The first load comes to about 1.0 MB on mobile and 1.4 MB on desktop (28 and 33 requests, as
+Lighthouse counts them), and about 0.75 MB and 1.1 MB of that is painted images. It used to be
+2.0 MB and 2.2 MB before the lazy images. The whole `dist/` folder is 4.2 MB.
 
 ### Accessibility
 
@@ -181,9 +184,9 @@ Lighthouse counts them), and 1.7 MB of that is the painted images. The whole `di
 - Reduced motion: CSS and SVG animations stop, GSAP and Three.js are never downloaded, and every
   section is still visible and complete.
 - Contrast: I measured text over the painted scenes pixel by pixel at widths from 320 to 1440px,
-  with reduced motion on. Almost everything clears 4.5:1. The misses are small: a lantern drifting
-  behind a few words of the Toolkit caption, one card tagline at 720px, and the hero line and the
-  Contact label sitting at about 4:1 over a bright patch of painting between 720 and 830px.
+  with reduced motion on. Everything clears 4.5:1 at 1440, 1000, 834, 390 and 360px. The misses are
+  small: the CMS card tagline at 720px while a lantern floats behind it, the "Say hello" label at
+  about 4:1 at 720px, and one arrow icon at 320px.
 - Headings and landmarks: one `h1`, no skipped levels, a `main`, a labelled `nav` and a `footer`.
   There are no forms on the site.
 - Not tested with a screen reader or in real Safari and Firefox yet, only in Chromium.
@@ -202,10 +205,12 @@ Lighthouse counts them), and 1.7 MB of that is the painted images. The whole `di
 
 ### Behaviour checks
 
-44 end-to-end checks pass in Chromium with Playwright: navigation by mouse, touch and keyboard, the
-mobile menu, copying the email (including when the browser blocks it), the CV download, the project
-links, the booking links, the custom cursor, the 404 page, the page with JavaScript switched off, and
-no console errors or failed requests. I also built it with the environment variables unset, valid and invalid.
+50 end-to-end checks pass in Chromium with Playwright: navigation by mouse, touch and keyboard, the
+mobile menu, the Journey line on tablets and phones (it starts at the first dot, runs dot to dot and
+ends in yellow dots), copying the email (including when the browser blocks it), the CV download, the
+project links, the booking links, the custom cursor, the 404 page, the page with JavaScript switched
+off, and no console errors or failed requests. I also built it with the environment variables unset,
+valid and invalid.
 
 ### Analytics
 

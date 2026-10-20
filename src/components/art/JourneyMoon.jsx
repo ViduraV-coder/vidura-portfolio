@@ -7,6 +7,8 @@ export default function JourneyMoon() {
       <img
         src={IMG.storyMoon}
         alt=""
+        loading="lazy"
+        data-soon=""
         style={{
           left: -130,
           top: '33%',

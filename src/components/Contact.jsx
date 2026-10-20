@@ -103,7 +103,7 @@ export default function Contact() {
       </div>
 
       {/* fades into the dark city so the small print stays off the bright windows */}
-      <footer className="absolute inset-x-0 bottom-0 z-2 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 bg-[linear-gradient(0deg,rgba(5,8,24,0.86),rgba(5,8,24,0.55)_70%,rgba(5,8,24,0))] px-[clamp(20px,6.7vw,96px)] py-[22px] font-mono text-[12px] tracking-[0.06em] text-cream max-ph:justify-center max-ph:pb-[18px] max-ph:text-center">
+      <footer className="absolute inset-x-0 bottom-0 z-2 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 bg-[linear-gradient(0deg,rgba(5,8,24,0.86),rgba(5,8,24,0.55)_70%,rgba(5,8,24,0))] px-[clamp(20px,6.7vw,96px)] py-[22px] font-mono text-[12px] tracking-[0.06em] text-cream [text-shadow:0_0_6px_rgba(5,8,24,0.85)] max-ph:justify-center max-ph:pb-[18px] max-ph:text-center">
         <span className="flex flex-col gap-1.5 max-ph:items-center">
           <span>
             © {SITE.year} {SITE.name}

@@ -65,7 +65,7 @@ export default function Hero() {
             </svg>
           </span>
         </h1>
-        <p className="mt-[18px] max-w-[520px] text-[18px] leading-[1.55] text-moon max-ph:text-[16px]">
+        <p className="mt-[18px] max-w-[520px] text-[18px] leading-[1.55] text-moon [text-shadow:0_0_10px_rgba(5,8,24,0.85)] max-ph:text-[16px]">
           {HERO.lead}
         </p>
         <div className="mt-[22px] flex flex-wrap gap-3">

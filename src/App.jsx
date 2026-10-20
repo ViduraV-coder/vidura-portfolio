@@ -10,12 +10,14 @@ import SharedDefs from './components/art/SharedDefs';
 import StoryBackdrop from './components/art/StoryBackdrop';
 import StorySparkles from './components/art/StorySparkles';
 import usePauseOffscreenSvg from './hooks/usePauseOffscreenSvg';
+import useLazyArt from './hooks/useLazyArt';
 import useMotion from './hooks/useMotion';
 import useReducedMotion from './hooks/useReducedMotion';
 
 export default function App() {
   useReducedMotion();
   useMotion();
+  useLazyArt();
   usePauseOffscreenSvg();
 
   return (

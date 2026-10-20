@@ -3,7 +3,7 @@ import { IMG } from '../../../assets';
 export default function BackendArt() {
   return (
     <>
-      <img src={IMG.toolBackend} alt="" />
+      <img src={IMG.toolBackend} alt="" loading="lazy" decoding="async" data-soon="" />
       <svg
         className="fx"
         aria-hidden="true"

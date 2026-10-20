@@ -167,6 +167,9 @@ export default function ContactBackdrop() {
         <img
           src={IMG.dawnCity}
           alt=""
+          loading="lazy"
+          decoding="async"
+          data-soon=""
           style={{
             position: 'absolute',
             inset: 0,
@@ -346,6 +349,8 @@ export default function ContactBackdrop() {
       <img
         src={IMG.cat}
         alt="A calico cat asleep"
+        loading="lazy"
+        data-soon=""
         style={{
           left: '6%',
           bottom: 80,

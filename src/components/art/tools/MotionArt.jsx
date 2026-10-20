@@ -4,7 +4,7 @@ import { Shooting, Twinkle } from '../svg';
 export default function MotionArt() {
   return (
     <>
-      <img src={IMG.toolMotion} alt="" />
+      <img src={IMG.toolMotion} alt="" loading="lazy" decoding="async" data-soon="" />
       <svg
         className="fx"
         aria-hidden="true"

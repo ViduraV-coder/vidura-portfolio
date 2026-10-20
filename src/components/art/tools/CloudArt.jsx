@@ -4,7 +4,7 @@ import { Shooting, Twinkle } from '../svg';
 export default function CloudArt() {
   return (
     <>
-      <img src={IMG.toolCloud} alt="" />
+      <img src={IMG.toolCloud} alt="" loading="lazy" decoding="async" data-soon="" />
       <svg
         className="fx"
         aria-hidden="true"

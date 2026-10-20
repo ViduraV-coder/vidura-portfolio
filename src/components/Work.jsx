@@ -20,12 +20,6 @@ export default function Work() {
         <ChapterIntro chapter={chapter} caption={COPY.work.caption}>
           Things I've <em>built</em>
         </ChapterIntro>
-        <div
-          data-reveal
-          className="mt-4 font-mono text-[13px] leading-[1.6] tracking-[0.04em] text-mist"
-        >
-          {COPY.work.hint}
-        </div>
       </div>
 
       {/* also the container the cards size against (@container/work) */}

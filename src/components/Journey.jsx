@@ -11,8 +11,7 @@ export default function Journey() {
   const chapter = CHAPTERS.journey;
   const rows = useRef(null);
   const road = useRef(null);
-  const rail = useRef(null);
-  useJourneyScroll(rows, road, rail);
+  useJourneyScroll(rows, road);
 
   return (
     <section id="journey" className="chapSec">
@@ -28,22 +27,28 @@ export default function Journey() {
 
       <div className="relative z-1" ref={rows}>
         <JourneyRoad drawRef={road} />
-        {/* straight road for tablets and phones */}
-        <div
-          className="absolute top-2 bottom-[70px] left-[13px] hidden w-0 border-0 border-l-[3px] border-dotted border-[rgba(243,233,210,0.5)] max-tab:block"
-          ref={rail}
-          aria-hidden="true"
-        >
-          <span className="absolute inset-y-0 -left-[3px] w-[3px] origin-top [transform:scaleY(0)] rounded-[3px] bg-accent shadow-[0_0_12px_rgba(255,181,71,0.55)] will-change-transform" />
-        </div>
 
         {JOURNEY.map((step, i) => {
           const right = i % 2 === 1;
+          const last = i === JOURNEY.length - 1;
           return (
             <div
               className={`relative flex h-[300px] items-center max-tab:block max-tab:h-auto max-tab:pb-[22px] max-tab:pl-[46px] ${right ? 'justify-end' : ''}`}
               key={step.title}
             >
+              {/* straight road for tablets and phones: this step's bit of line, from its dot down to the next
+                  one. the grey dots are the unlit road and .jfill is the yellow that grows over it. the last
+                  step has no dot after it, so its line carries on as yellow dots instead of a solid bar */}
+              <span
+                className={`absolute top-[34px] left-[13px] hidden w-0 border-0 border-l-[3px] border-dotted border-[rgba(243,233,210,0.5)] max-tab:block ${last ? 'bottom-0' : '-bottom-[34px]'}`}
+                aria-hidden="true"
+              >
+                {last ? (
+                  <span className="jfill jdots absolute inset-y-0 -left-[3px] w-0 border-0 border-l-[3px] border-dotted border-accent [filter:drop-shadow(0_0_4px_rgba(255,181,71,0.7))] [clip-path:inset(0_0_100%_0)]" />
+                ) : (
+                  <span className="jfill absolute inset-y-0 -left-[3px] w-[3px] origin-top [transform:scaleY(0)] rounded-[3px] bg-accent shadow-[0_0_12px_rgba(255,181,71,0.55)] will-change-transform" />
+                )}
+              </span>
               {/* useJourneyScroll finds the dots by "jnode" and adds is-lit */}
               <div className="jnode absolute top-[150px] left-1/2 size-7 [transform:translate(-50%,-50%)] rounded-full border-[6px] border-accent bg-deep max-tab:top-[34px] max-tab:left-3.5 max-tab:transition-[background,box-shadow] max-tab:duration-300 max-tab:ease-[ease] max-tab:[&.is-lit]:bg-accent max-tab:[&.is-lit]:shadow-[0_0_0_6px_rgba(255,181,71,0.16),0_0_20px_rgba(255,181,71,0.65)]" />
               {/* navy tint under the glass for readability, stronger under 1000px where the cards slide over the moon */}

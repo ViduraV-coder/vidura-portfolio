@@ -8,7 +8,8 @@ const TITLE = {
 };
 
 const SHADOW = {
-  night: '[text-shadow:0_1px_12px_rgba(6,10,40,0.7)]',
+  night:
+    '[text-shadow:0_1px_2px_rgba(6,10,40,0.7),0_0_10px_rgba(6,10,40,0.95),0_0_24px_rgba(6,10,40,0.8)]',
   dawn: '[text-shadow:0_1px_2px_rgba(44,12,58,0.55),0_0_16px_rgba(44,12,58,0.7)]',
 };
 
@@ -16,7 +17,7 @@ export function Eyebrow({ children, dawn = false }) {
   return (
     <div
       data-reveal
-      className={`font-mono text-[13px] tracking-[0.16em] ${dawn ? 'text-white [text-shadow:0_1px_2px_rgba(44,12,58,0.7),0_0_10px_rgba(44,12,58,0.9)]' : 'text-sky'}`}
+      className={`font-mono text-[13px] tracking-[0.16em] ${dawn ? 'text-white [text-shadow:0_1px_2px_rgba(44,12,58,0.8),0_0_8px_rgba(44,12,58,0.95),0_0_20px_rgba(44,12,58,0.75)]' : 'text-sky'}`}
     >
       {children}
     </div>

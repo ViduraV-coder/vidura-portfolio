@@ -88,11 +88,9 @@ export const COPY = {
   work: {
     caption:
       'The valley switches its lights on, one window at a time. Each one is something I built.',
-    hint: 'Six windows lit so far, with more on the way.',
   },
   toolkit: {
     caption: 'Lanterns drift up from the workshop. Every one carries a tool I reach for.',
-    lead: 'Five little night scenes, one for each part of the stack, each with its own lamp left on.',
   },
   journey: {
     caption: 'The long road. Quiet, a bit lonely, and worth it.',

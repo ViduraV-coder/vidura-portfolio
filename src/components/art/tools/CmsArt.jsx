@@ -4,7 +4,7 @@ import { Fireflies, Shooting, Twinkle } from '../svg';
 export default function CmsArt() {
   return (
     <>
-      <img src={IMG.toolCms} alt="" />
+      <img src={IMG.toolCms} alt="" loading="lazy" decoding="async" data-soon="" />
       <svg
         className="fx"
         aria-hidden="true"

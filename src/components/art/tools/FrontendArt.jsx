@@ -4,7 +4,7 @@ import { Shooting, Twinkle } from '../svg';
 export default function FrontendArt() {
   return (
     <>
-      <img src={IMG.toolFrontend} alt="" />
+      <img src={IMG.toolFrontend} alt="" loading="lazy" decoding="async" data-soon="" />
       <svg
         className="fx"
         aria-hidden="true"

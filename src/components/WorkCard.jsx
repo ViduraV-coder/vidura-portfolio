@@ -76,9 +76,15 @@ export default function WorkCard({ project: p }) {
       {...lean}
       {...preview}
     >
-      <div
-        className="cardArt absolute inset-0 animate-[kenb_22s_ease-in-out_infinite_alternate] bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url(${p.backdrop})`, backgroundPosition: p.backdropPosition }}
+      {/* an img rather than a css background so the browser can hold it back until the card is near the screen */}
+      <img
+        className="cardArt absolute inset-0 size-full animate-[kenb_22s_ease-in-out_infinite_alternate] object-cover"
+        src={p.backdrop}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        data-soon=""
+        style={{ objectPosition: p.backdropPosition }}
       />
       <Fx />
       <BrowserFrame

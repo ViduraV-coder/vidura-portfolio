@@ -94,6 +94,8 @@ export default function StoryBackdrop() {
           className="sMoon"
           src={IMG.storyMoon}
           alt=""
+          loading="lazy"
+          data-soon=""
           style={{
             right: -20,
             top: -120,
